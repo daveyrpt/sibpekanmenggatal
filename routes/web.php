@@ -25,4 +25,6 @@ Route::get('/membership', [App\Http\Controllers\MembershipController::class, 'in
 
 Route::get('/membership/profile', [App\Http\Controllers\MembershipController::class, 'profile'])->name('membership.profile');
 
+Route::get('/membership/create', [App\Http\Controllers\MembershipController::class, 'create'])->name('membership.create');
+
 Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index');

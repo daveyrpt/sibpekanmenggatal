@@ -15,4 +15,9 @@ class MembershipController extends Controller
     {
         return view('membership.profile');
     }
+
+    public function create()
+    {
+        return view('membership.create');
+    }
 }

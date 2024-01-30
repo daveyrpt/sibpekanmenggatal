@@ -9,7 +9,7 @@
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item active">Membership</li>
                 </ol>
-                <a class="btn btn-success my-2">Tambah Ahli</a>
+                <a href="{{ route ('membership.create')}}" class="btn btn-success my-2">Tambah Ahli</a>
             </nav>
 
             <div class="col-12">

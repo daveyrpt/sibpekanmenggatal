@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app"class="pt-5">
         @guest
             @yield('content')
         @else
@@ -38,6 +38,7 @@
 
 <!-- Template Main JS File -->
 <script src="{{ asset('NiceAdmin/assets/js/main.js') }}"></script>
+@stack('scripts')
 </body>
 
 </html>
