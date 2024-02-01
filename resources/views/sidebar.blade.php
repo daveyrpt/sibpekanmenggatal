@@ -20,12 +20,12 @@
       <li class="nav-item">
         <a class="nav-link {{ Request::is('news*') ? '' : 'collapsed' }}" href="{{ route('news.index') }}">
           <i class="bi bi-newspaper"></i>
-          <span>News and Event</span>
+          <span>News</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route ('membership.index')}}">
+        <a class="nav-link {{ Request::is('account-setting*') ? '' : 'collapsed' }}" href="{{ route('account-setting.index') }}">
           <i class="bi bi-nut-fill"></i>
           <span>Setting</span>
         </a>

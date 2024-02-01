@@ -20,25 +20,23 @@
                         <table class="table table-borderless datatable">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nama</th>
-                                    <th scope="col">Alamat</th>
-                                    <th scope="col">Pekerjaan</th>
-                                    <th scope="col">Anggota</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Tetatapn</th>
+                                    <th scope="col">#ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Occupation</th>
+                                    <th scope="col">Member Type</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row"><a href="#">#2457</a></th>
-                                    <td><a href="#" class="text-primary">Brandon Jacob</a></td>
+                                    <td><a href="{{ route ('membership.profile')}}" class="text-primary">Brandon Jacob</a></td>
                                     <td>Kota Kinabalu</td>
                                     <td>Jurulatih</td>
-                                    <td>Bersatu</td>
-                                    <td><span class="badge bg-success">Aktif</span></td>
+                                    <td>Bersekutu</td>
                                     <td>
-                                        <a href='{{ route ('membership.profile')}}' type="button" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-fill"></i></a>
+                                        <a href='{{ route ('membership.edit')}}' type="button" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-fill"></i></a>
                                         <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                                     </td>
                                 </tr>
@@ -48,7 +46,6 @@
                                     <td>Lahad Datu</td>
                                     <td>Peniaga</td>
                                     <td>Tetap</td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
                                     <td>
                                         <button type="button" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-fill"></i></button>
                                         <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
@@ -59,8 +56,7 @@
                                     <td><a href="#" class="text-primary">Ashleigh Langosh</a></td>
                                     <td>Lahad Datu</td>
                                     <td>Tidak Bekerja</td>
-                                    <td>Bersatu</td>
-                                    <td><span class="badge bg-success">Aktif</span></td>
+                                    <td>Bersekutu</td>
                                     <td>
                                         <button type="button" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-fill"></i></button>
                                         <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
@@ -71,8 +67,7 @@
                                     <td><a href="#" class="text-primary">Angus Grady</a></td>
                                     <td>Kota Belud</td>
                                     <td>Guru</td>
-                                    <td>Bersatu</td>
-                                    <td><span class="badge bg-danger">Tidak Aktif</span></td>
+                                    <td>Bersekutu</td>
                                     <td>
                                         <button type="button" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-fill"></i></button>
                                         <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
@@ -84,7 +79,6 @@
                                     <td>Sandakan</td>
                                     <td>Suri Rumah</td>
                                     <td>Tetap</td>
-                                    <td><span class="badge bg-success">Aktif</span></td>
                                     <td>
                                         <button type="button" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-fill"></i></button>
                                         <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>

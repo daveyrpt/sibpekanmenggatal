@@ -20,4 +20,9 @@ class MembershipController extends Controller
     {
         return view('membership.create');
     }
+
+    public function edit()
+    {
+        return view('membership.edit');
+    }
 }

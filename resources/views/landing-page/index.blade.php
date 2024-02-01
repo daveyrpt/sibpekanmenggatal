@@ -7,32 +7,8 @@
 
     <title>SIB Pekan Menggatal</title>
 
-    {{--     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-    <link href="{{ asset('css/landing-page.css') }}" rel="stylesheet">
-
-    <!-- Swipper CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <!-- Tailwind Styles -->
-    <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}" />
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-    <!-- AOS Styles -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
     <link href="{{ asset('NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('NiceAdmin/assets/css/style.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" /> --}}
-
-    <link href="{{ asset('css/landing-page.css') }}" rel="stylesheet">
     <!--- basic page needs
    ================================================== -->
     <meta charset="utf-8">
@@ -59,9 +35,44 @@
  ================================================== -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        #popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        #popup-content {
+            background: #fff;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body id='top'>
+
+    <!-- Popup Container -->
+    <div id="popup-container">
+        <!-- Popup Content -->
+        <div id="popup-content">
+            <p>This is your popup title. Customize it as needed.</p>
+            <img src="https://images.unsplash.com/photo-1522543558187-768b6df7c25c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Description of the event">
+            <button class="mt-5" onclick="closePopup()">Close</button>
+        </div>
+    </div>
 
     <!-- header
    ================================================== -->
@@ -76,12 +87,11 @@
             <ul class="header-main-nav">
                 <li class="current"><a class="smoothscroll" href="#home" title="home">Home</a></li>
                 <li><a class="smoothscroll" href="#about" title="about">About</a></li>
-                <li><a class="smoothscroll" href="#pricing" title="pricing">Pricing</a></li>
-                <li><a class="smoothscroll" href="#testimonials" title="testimonials">Testimonials</a></li>
-                <li><a class="smoothscroll" href="#download" title="download">Download</a></li>
+                <li><a class="smoothscroll" href="#download" title="download">Contact</a></li>
+                <li><a href="#" onclick="showPopup()">News</a></li>
             </ul>
 
-            <a href="#" title="sign-up" class="button button-primary cta">Sign In</a>
+            <a href="{{route('login')}}" title="sign-up" class="button button-primary cta">Sign In</a>
         </nav>
 
         <a class="header-menu-toggle" href="#"><span>Menu</span></a>
@@ -111,7 +121,6 @@
 
                     <div class="buttons" data-aos="fade-up">
                         <a href="#download" class="smoothscroll button stroke">
-                            {{-- <span class="icon-circle-down" aria-hidden="true"></span> --}}
                             Become a member
                         </a>
                         <a href="http://player.vimeo.com/video/14592941?title=0&amp;byline=0&amp;portrait=0&amp;color=39b54a"
@@ -127,11 +136,6 @@
 
                 </div>
 
-                {{--       <div class="home-image-right">
-                    <img src="images/iphone-app-470.png" 
-                        srcset="images/iphone-app-470.png 1x, images/iphone-app-940.png 2x"  
-                        data-aos="fade-up">
-                </div> --}}
             </div>
 
         </div> <!-- end home-content -->
@@ -239,186 +243,11 @@
 
                 </div> <!-- /bgrid -->
 
-                {{--                 <div class="bgrid feature" data-aos="fade-up">
-
-                    <span class="icon"><i class="icon-file"></i></span>
-
-                    <div class="service-content">
-                        <h3>Clean Code</h3>
-
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit.
-                        </p>
-
-                    </div>
-
-                </div> <!-- /bgrid --> --}}
-
-                {{--                 <div class="bgrid feature" data-aos="fade-up">
-
-                    <span class="icon"><i class="icon-sliders"></i></span>
-
-                    <div class="service-content">
-                        <h3>Easy To Customize</h3>
-
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit.
-                        </p>
-                    </div>
-
-                </div> <!-- /bgrid --> --}}
-
-                {{--                 <div class="bgrid feature" data-aos="fade-up">
-
-                    <span class="icon"><i class="icon-gift"></i></span>
-
-                    <div class="service-content">
-                        <h3>Free of Charge</h3>
-
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit.
-                        </p>
-
-                    </div>
-
-                </div> <!-- /bgrid --> --}}
-
             </div> <!-- end features-list -->
 
         </div> <!-- end about-features -->
 
-        {{--         <div class="row about-how">
-
-            <h1 class="intro-header" data-aos="fade-up">How The App Works?</h1>
-
-            <div class="about-how-content" data-aos="fade-up">
-                <div class="about-how-steps block-1-2 block-tab-full group">
-
-                    <div class="bgrid step" data-item="1">
-                        <h3>Sign-Up</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo.
-                        </p>
-                    </div>
-
-                    <div class="bgrid step" data-item="2">
-                        <h3>Upload</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo.
-                        </p>
-                    </div>
-
-                    <div class="bgrid step" data-item="3">
-                        <h3>Create</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo.
-                        </p>
-                    </div>
-
-                    <div class="bgrid step" data-item="4">
-                        <h3>Publish</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo.
-                        </p>
-                    </div>
-
-                </div>
-            </div> <!-- end about-how-content -->
-
-        </div> <!-- end about-how -->
-
-        <div class="row about-bottom-image">
-
-            <img src="images/app-screens-1200.png"
-                srcset="images/app-screens-600.png 600w, 
-                        images/app-screens-1200.png 1200w, 
-                        images/app-screens-2800.png 2800w"
-                sizes="(max-width: 2800px) 100vw, 2800px" alt="App Screenshots" data-aos="fade-up">
-
-        </div> <!-- end about-bottom-image --> --}}
-
     </section> <!-- end about -->
-
-
-    <!-- pricing
-    ================================================== -->
-    {{--     <section id="pricing">
-        <div class="row pricing-content">
-
-            <div class="col-four pricing-intro">
-                <h1 class="intro-header" data-aos="fade-up">Our Pricing Options</h1>
-
-                <p data-aos="fade-up">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                    architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium.
-                </p>
-            </div>
-
-            <div class="col-eight pricing-table">
-                <div class="row">
-
-                    <div class="col-six plan-wrap">
-                        <div class="plan-block" data-aos="fade-up">
-
-                            <div class="plan-top-part">
-                                <h3 class="plan-block-title">Lite Plan</h3>
-                                <p class="plan-block-price"><sup>$</sup>25</p>
-                                <p class="plan-block-per">Per Month</p>
-                            </div>
-
-                            <div class="plan-bottom-part">
-                                <ul class="plan-block-features">
-                                    <li><span>3GB</span> Storage</li>
-                                    <li><span>10GB</span> Bandwidth</li>
-                                    <li><span>5</span> Databases</li>
-                                    <li><span>30</span> Email Accounts</li>
-                                </ul>
-
-                                <a class="button button-primary large" href="">Get Started</a>
-                            </div>
-
-                        </div>
-                    </div> <!-- end plan-wrap -->
-
-                    <div class="col-six plan-wrap">
-                        <div class="plan-block primary" data-aos="fade-up">
-
-                            <div class="plan-top-part">
-                                <h3 class="plan-block-title">Pro Plan</h3>
-                                <p class="plan-block-price"><sup>$</sup>50</p>
-                                <p class="plan-block-per">Per Month</p>
-                            </div>
-
-                            <div class="plan-bottom-part">
-                                <ul class="plan-block-features">
-                                    <li><span>5GB</span> Storage</li>
-                                    <li><span>20GB</span> Bandwidth</li>
-                                    <li><span>15</span> Databases</li>
-                                    <li><span>70</span> Email Accounts</li>
-                                </ul>
-
-                                <a class="button button-primary large" href="">Get Started</a>
-                            </div>
-
-                        </div>
-                    </div> <!-- end plan-wrap -->
-
-                </div>
-            </div> <!-- end pricing-table -->
-
-        </div> <!-- end pricing-content -->
-    </section> <!-- end pricing --> --}}
 
 
     <!-- Testimonials Section
@@ -489,21 +318,38 @@
 
         <div class="row">
             <div class="col-full">
-                <h1 class="intro-header" data-aos="fade-up">Find our church here!</h1>
+                <h1 class="intro-header" data-aos="fade-up">Contact us !</h1>
+                <div class="card p-4">
+                    <form action="forms/contact.php" method="post" class="php-email-form">
+                        <div class="row gy-4">
 
-                <p class="lead" data-aos="fade-up">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                </p>
+                            <div class="col-md-6">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                    required>
+                            </div>
 
-{{--                 <ul class="download-badges">
-                    <li><a href="#" title="" class="badge-appstore" data-aos="fade-up">App Store</a>
-                    </li>
-                    <li><a href="#" title="" class="badge-googleplay" data-aos="fade-up">Play Store</a>
-                    </li>
-                </ul> --}}
+                            <div class="col-md-6 ">
+                                <input type="email" class="form-control" name="email" placeholder="Your Email"
+                                    required>
+                            </div>
 
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" name="subject" placeholder="Subject"
+                                    required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" name="subject" placeholder="Content"
+                                    required>
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="button button-primary cta">Send Message</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -519,7 +365,7 @@
 
                 <div class="col-three md-1-3 tab-full footer-info">
 
-                    <div class="footer-logo"></div>
+                    <h4>SIBPM</h4>
 
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in ipsum id orci porta
@@ -614,8 +460,7 @@
 
                 <div class="col-twelve">
                     <div class="copyright">
-                        <span>© Copyright Dazzle 2018.</span>
-                        <span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
+                        <span>© All rights reserved.</span>
                     </div>
 
                     <div id="go-top">
@@ -639,6 +484,24 @@
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Check if the popup should be shown (using localStorage)
+            if (!localStorage.getItem("popupShown")) {
+                showPopup();
+                localStorage.setItem("popupShown", "true");
+            }
+        });
+
+        function showPopup() {
+            document.getElementById("popup-container").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("popup-container").style.display = "none";
+            localStorage.setItem("popupShown", "");
+        }
+    </script>
 </body>
 
 

@@ -3,12 +3,12 @@
 @section('content')
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Profile Member</h1>
+            <h1>Edit Member</h1>
             <nav class="d-flex justify-content-between">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item">Membership</li>
-                    <li class="breadcrumb-item active">Profile</li>
+                    <li class="breadcrumb-item active">Edit</li>
                 </ol>
             </nav>
 
@@ -27,7 +27,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>Jackk12</p>
+                                        <input type="text" class="form-control" id="memberName"
+                                            placeholder="" value="Jackk12" required>
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +41,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>Jack@gmail.com</p>
+                                        <input type="email" class="form-control" id="memberName"
+                                            placeholder="" value="Jack@gmail.com" required>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +55,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>*******</p>
+                                        <input type="password" class="form-control" id="memberName"
+                                            placeholder="" value="123456" required>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +71,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>Jack Arson</p>
+                                        <input type="text" class="form-control" id="memberName"
+                                            placeholder="e.g., Jack Arson" value="Jack Arson" required>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +86,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>31/12/2024</p>
+                                        <input type="date" class="form-control" id="memberEmail" value="2017-06-01" required>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +100,9 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>Kompleks Mahkamah Kota Kinabalu No. 1 Jalan Kebajikan</p>
+                                        <input type="text" class="form-control" id="memberName"
+                                            placeholder="e.g., Kompleks Mahkamah Kota Kinabalu No. 1 Jalan Kebajikan" 
+                                            value="Kompleks Mahkamah Kota Kinabalu No. 1 Jalan Kebajikan" required>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +116,11 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>Kota Kinabalu</p>
+                                        <select class="form-control" id="memberGender" required>
+                                            <option value="Kota Kinabalu" selected>Kota Kinabalu</option>
+                                            <option value="male">1</option>
+                                            <option value="female">2</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +134,11 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>Sabah</p>
+                                        <select class="form-control" id="memberGender" required>
+                                            <option value="Sabah" selected>Sabah</option>
+                                            <option value="male">1</option>
+                                            <option value="female">2</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +152,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>88300</p>
+                                        <input type="number" class="form-control" id="memberName"
+                                            placeholder="e.g., 88300" value="88300" required>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +167,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>0123456789</p>
+                                        <input type="number" class="form-control" id="memberName"
+                                            placeholder="e.g., 0123456789" value="0123456789" required>
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +182,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>example@gmail.com</p>
+                                        <input type="email" class="form-control" id="memberName"
+                                            placeholder="e.g., example@gmail.com" value="example@gmail.com" required>
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +197,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>Contract Teacher</p>
+                                        <input type="email" class="form-control" id="memberName"
+                                            placeholder="e.g., Contract Teacher" value="Contract Teacher" required>
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +212,10 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>Lelaki</p>
+                                        <select class="form-control" id="memberGender" required>
+                                            <option value="male" selected>Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +231,10 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <p>Bersekutu</p>
+                                        <select class="form-control" id="memberType" required>
+                                            <option value="permanent" selected>Tetap</option>
+                                            <option value="associate">Bersekutu</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -230,32 +254,36 @@
                                 </div>
                             </div>
 
-                            <div class="container m-3">
+                            <div class="container mt-5 d-flex justify-content-between">
                                 <h1>Family Info</h1>
-                            </div>
-
-                            <div class="row m-3">
-                                <div class="col-md-2 mb-1">
-                                    <p>1.</p>
-                                </div>
-                                <div class="col-md-6 mb-1">
-                                    <p>John</p>
-                                </div>
-                                <div class="col-md-4 mb-1">
-                                    <p>Parent</p>
+                                <div class="text-end">
+                                    <button type="button" class="btn btn-success" onclick="addRow()">+</button>
+                                    <button type="button" class="btn btn-danger" onclick="removeLastRow()">-</button>
                                 </div>
                             </div>
 
-                            <div class="row m-3">
-                                <div class="col-md-2 mb-1">
-                                    <p>2.</p>
+                            <div class="row m-1">
+                                <div class="col-md-8 mb-3">
+                                    <input type="text" class="form-control" id="input1"
+                                        placeholder="Name" required>
                                 </div>
-                                <div class="col-md-6 mb-1">
-                                    <p>mary</p>
+                                <div class="col-md-4 mb-3">
+                                    <select class="form-control" id="relationship" required>
+                                        <option value="" disabled selected>Select Relationship</option>
+                                        <option value="spouse">Spouse</option>
+                                        <option value="parent">Parent</option>
+                                        <option value="child">Child</option>
+                                        <option value="sibling">Sibling</option>
+                                        <!-- Add more relationship options as needed -->
+                                    </select>
                                 </div>
-                                <div class="col-md-4 mb-1">
-                                    <p>Parent</p>
-                                </div>
+                            </div>
+
+                            <div id="dynamicRows"></div>
+
+                            <div class="text-center mt-3">
+
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
 
                         </form><!-- End Member Information Form -->
@@ -266,3 +294,30 @@
     </main>
 @endsection
 
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script>
+        function addRow() {
+            var newRow = '<div class="row m-1">' +
+                '<div class="col-md-8 mb-3">' +
+                '<input type="text" class="form-control" name="nama[]" placeholder="Name" required>' +
+                '</div>' +
+                '<div class="col-md-4 mb-3">' +
+                '<select class="form-control" name="hubungan[]" required>' +
+                '<option value="" disabled selected>Select Relationship</option>' +
+                '<option value="spouse">Spouse</option>' +
+                '<option value="parent">Parent</option>' +
+                '<option value="child">Child</option>' +
+                '<option value="sibling">Sibling</option>' +
+                '</select>' +
+                '</div>' +
+                '</div>';
+
+            $('#dynamicRows').append(newRow);
+        }
+
+        function removeLastRow() {
+            $('#dynamicRows .row:last').remove();
+        }
+    </script>
