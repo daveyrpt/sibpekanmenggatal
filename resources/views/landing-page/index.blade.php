@@ -119,7 +119,7 @@
                         Community.
                     </h1>
 
-                    <div class="buttons" data-aos="fade-up">
+                    <div class="buttons" >
                         <a href="#download" class="smoothscroll button stroke">
                             Become a member
                         </a>
