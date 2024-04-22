@@ -9,88 +9,34 @@
 
     <link href="{{ asset('NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <!--- basic page needs
-   ================================================== -->
-    <meta charset="utf-8">
-    <title>Dazzle</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- mobile specific metas
-   ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSS
-   ================================================== -->
-    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/vendor.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
     <!-- script
    ================================================== -->
     <script src="{{ asset('js/modernizr.js') }}"></script>
     <script src="{{ asset('js/pace.min.js') }}"></script>
 
-    <!-- favicons
- ================================================== -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+   @vite(['resources/js/app.js'])
 
-    <style>
-        #popup-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-        }
-
-        #popup-content {
-            position: relative;
-            background: #fff;
-            padding: 20px;
-            max-width: 90%;
-            max-height: 90%;
-            overflow: auto;
-            text-align: center;
-        }
-
-        #close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body id='top'>
 
-    <!-- Popup Container -->
     <div id="popup-container">
-        <!-- Popup Content -->
         <div id="popup-content">
             <div id="close-button" onclick="closePopup()">X</div>
             <p>Set the title here.</p>
             <img src="https://images.unsplash.com/photo-1522543558187-768b6df7c25c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Description of the event">
-            {{-- <button class="mt-5" onclick="closePopup()">Close</button> --}}
         </div>
     </div>
 
-    <!-- header
-   ================================================== -->
-    <header id="header" class="row-header">
 
+    <header id="header" class="row-header">
         <div class="header-logo">
             <img src="images/sib_logo.png" data-aos="fade-up">
         </div>
-
         <nav id="header-nav-wrap">
             <ul class="header-main-nav">
                 <li class="current"><a class="smoothscroll" href="#home" title="home">Home</a></li>
@@ -101,26 +47,18 @@
 
             <a href="{{route('login')}}" title="sign-up" class="button button-primary cta">Sign In</a>
         </nav>
-
         <a class="header-menu-toggle" href="#"><span>Menu</span></a>
+    </header>
 
-    </header> <!-- /header -->
-
-
-    <!-- home
-   ================================================== -->
     <section id="home" data-parallax="scroll"
         data-image-src="https://images.unsplash.com/photo-1496450681664-3df85efbd29f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmFja2dyb3VuZCUyMGNsb3VkfGVufDB8fDB8fHww"
         data-natural-width=3000 data-natural-height=2000>
 
-        <div class="overlay"></div>
         <div class="home-content">
-
             <div class="row contents">
                 <div class="home-content-left">
 
-                    <h3 data-aos="fade-up">Welcome to SIB Pekan Menggatal</h3>
-
+                    <h3 data-aos="fade-up" id="title">Welcome to SIB Pekan Menggatal</h3>
                     <h1 data-aos="fade-up">
                         Embrace Faith, <br>
                         Love, <br>
@@ -131,13 +69,8 @@
                         <a href="#download" class="smoothscroll button stroke">
                             Become a member
                         </a>
-                        <a href="http://player.vimeo.com/video/14592941?title=0&amp;byline=0&amp;portrait=0&amp;color=39b54a"
+                        <a href="https://images.unsplash.com/photo-1522543558187-768b6df7c25c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                             data-lity class="button stroke">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
-                                class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                            </svg>
                             Church Location
                         </a>
                     </div>
@@ -146,7 +79,7 @@
 
             </div>
 
-        </div> <!-- end home-content -->
+        </div> 
 
         <ul class="home-social-list">
             <li>
@@ -162,7 +95,6 @@
                 <a href="#"><i class="fa fa-youtube-play"></i></a>
             </li>
         </ul>
-        <!-- end home-social-list -->
 
         <div class="home-scrolldown">
             <a href="#about" class="scroll-icon smoothscroll">
@@ -170,8 +102,7 @@
                 <i class="icon-arrow-right" aria-hidden="true"></i>
             </a>
         </div>
-
-    </section> <!-- end home -->
+    </section>
 
 
     <!-- about
@@ -486,24 +417,23 @@
     <script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Check if the popup should be shown (using localStorage)
-            if (!localStorage.getItem("popupShown")) {
-                showPopup();
-                localStorage.setItem("popupShown", "true");
-            }
-        });
+document.addEventListener("DOMContentLoaded", function() {
+ 
+    if (!localStorage.getItem("popupShown")) {
+        showPopup();
+        localStorage.setItem("popupShown", "true");
+    }
+});
 
-        function showPopup() {
-            document.getElementById("popup-container").style.display = "flex";
-        }
+function showPopup() {
+    document.getElementById("popup-container").style.display = "flex";
+}
 
-        function closePopup() {
-            document.getElementById("popup-container").style.display = "none";
-            localStorage.setItem("popupShown", "");
-        }
+function closePopup() {
+    document.getElementById("popup-container").style.display = "none";
+    localStorage.setItem("popupShown", "");
+}
     </script>
 </body>
 
