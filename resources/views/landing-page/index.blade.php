@@ -23,15 +23,15 @@
 
 <body id='top'>
 
-    <div id="popup-container">
-        <div id="popup-content">
-            <div id="close-button" onclick="closePopup()">X</div>
-            <p>Set the title here.</p>
-            <img src="https://images.unsplash.com/photo-1522543558187-768b6df7c25c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Description of the event">
+    @if(App\Models\News::first()->status)
+        <div id="popup-container">
+            <div id="popup-content">
+                <div id="close-button" onclick="closePopup()">X</div>
+                <p>{{ App\Models\News::first()->title }}</p>
+            <img src="{{ asset('images/news-image.png') }}" alt="Example Image">
+            </div>
         </div>
-    </div>
-
+    @endif
 
     <header id="header" class="row-header">
         <div class="header-logo">
@@ -42,7 +42,9 @@
                 <li class="current"><a class="smoothscroll" href="#home" title="home">Home</a></li>
                 <li><a class="smoothscroll" href="#about" title="about">About</a></li>
                 <li><a class="smoothscroll" href="#download" title="download">Contact</a></li>
-                <li><a href="#" onclick="showPopup()">News</a></li>
+                @if(App\Models\News::first()->status)
+                    <li><a href="#" onclick="showPopup()">News</a></li>
+                @endif
             </ul>
 
             <a href="{{route('login')}}" title="sign-up" class="button button-primary cta">Sign In</a>

@@ -37,6 +37,10 @@ Route::delete('/profile/{userId}/delete', [App\Http\Controllers\ProfileControlle
 
 Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
 
+Route::post('/news', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store');
+
+Route::post('/news/update-status', [App\Http\Controllers\NewsController::class, 'updateStatus'])->name('news.updateStatus');
+
 Route::get('/account-setting', [App\Http\Controllers\AccountController::class, 'index'])->name('account-setting.index');
 
 Route::post('/account-setting/update', [App\Http\Controllers\AccountController::class, 'update'])->name('account-setting.update');
