@@ -19,16 +19,24 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home.index');
 
-Route::get('/membership', [App\Http\Controllers\MembershipController::class, 'index'])->name('membership.index');
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
 
-Route::get('/membership/profile', [App\Http\Controllers\MembershipController::class, 'profile'])->name('membership.profile');
+Route::get('/profile/view/{userId}', [App\Http\Controllers\ProfileController::class, 'view'])->name('profile.view');
 
-Route::get('/membership/create', [App\Http\Controllers\MembershipController::class, 'create'])->name('membership.create');
+Route::get('/profile/create', [App\Http\Controllers\ProfileController::class, 'create'])->name('profile.create');
 
-Route::get('/membership/edit', [App\Http\Controllers\MembershipController::class, 'edit'])->name('membership.edit');
+Route::post('/profile/store', [App\Http\Controllers\ProfileController::class, 'store'])->name('profile.store');
+
+Route::get('/profile/{userId}/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+
+Route::post('/profile/{userId}/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
+Route::delete('/profile/{userId}/delete', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
 
 Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
 
 Route::get('/account-setting', [App\Http\Controllers\AccountController::class, 'index'])->name('account-setting.index');
+
+Route::post('/account-setting/update', [App\Http\Controllers\AccountController::class, 'update'])->name('account-setting.update');

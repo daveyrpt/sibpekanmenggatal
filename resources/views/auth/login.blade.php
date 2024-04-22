@@ -7,8 +7,8 @@
 
                 <div class="d-flex justify-content-center py-4">
                     <a href="{{ route('index') }}" class="logo d-flex align-items-center w-auto">
-                        <img src="{{ asset('NiceAdmin/assets/img/logo.png') }}" alt="">
-                        <span class="d-none d-lg-block">SIB Church</span>
+                        <img src="{{ asset('images/sib_logo.png') }}" alt="">
+                        <span class="d-none d-lg-block">SIBPM</span>
                     </a>
                 </div>
 
@@ -68,11 +68,11 @@
                             <div class="col-12">
                                 <button class="btn btn-primary w-100" type="submit">Login</button>
 
-                                @if (Route::has('password.request'))
+{{--                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                @endif --}}
                             </div>
 
                             <div class="col-12">

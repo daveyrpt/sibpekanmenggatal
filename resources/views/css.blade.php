@@ -1,5 +1,5 @@
 <!-- Favicons -->
-<link href="{{ asset('NiceAdmin/assets/img/favicon.png') }}" rel="icon">
+{{-- <link href="{{ asset('NiceAdmin/assets/img/favicon.png') }}" rel="icon"> --}}
 <link href="{{ asset('NiceAdmin/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
@@ -13,7 +13,7 @@
 <link href="{{ asset('NiceAdmin/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
 <link href="{{ asset('NiceAdmin/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
 <link href="{{ asset('NiceAdmin/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-<link href="{{ asset('NiceAdmin/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset('NiceAdmin/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet"> --}}
 
 
 <link href="{{ asset('NiceAdmin/assets/css/style.css') }}" rel="stylesheet">
@@ -25,7 +25,7 @@
 <script src="{{ asset('NiceAdmin/assets/vendor/chart.js/chart.umd.js') }}"></script>
 <script src="{{ asset('NiceAdmin/assets/vendor/echarts/echarts.min.js') }}"></script>
 <script src="{{ asset('NiceAdmin/assets/vendor/quill/quill.min.js') }}"></script>
-<script src="{{ asset('NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
+{{-- <script src="{{ asset('NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js') }}"></script> --}}
 <script src="{{ asset('NiceAdmin/assets/vendor/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('NiceAdmin/assets/vendor/php-email-form/validate.js') }}"></script>
 

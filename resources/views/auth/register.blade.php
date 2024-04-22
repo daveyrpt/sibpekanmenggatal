@@ -6,8 +6,8 @@
             <div class="col-lg-4 col-md-6">
                 <div class="d-flex justify-content-center py-4">
                     <a href="{{ route('index') }}" class="logo d-flex align-items-center w-auto">
-                        <img src="{{ asset('NiceAdmin/assets/img/logo.png') }}" alt="">
-                        <span class="d-none d-lg-block">SIB Church</span>
+                        <img src="{{ asset('images/sib_logo.png') }}" alt="">
+                        <span class="d-none d-lg-block">SIBPM</span>
                     </a>
                 </div>
                 <div class="card">
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12">
+{{--                             <div class="col-12">
                                 <div class="form-check">
                                     <input class="form-check-input" name="terms" type="checkbox" value=""
                                         id="acceptTerms" required>
@@ -88,7 +88,7 @@
                                             href="#">terms and conditions</a></label>
                                     <div class="invalid-feedback">You must agree before submitting.</div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="col-12">
                                 <button class="btn btn-primary w-100" type="submit">Create Account</button>

@@ -7,86 +7,84 @@
             <nav class="d-flex justify-content-between">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Membership</li>
-                    <li class="breadcrumb-item active">Add</li>
+                    <li class="breadcrumb-item active">Create</li>
                 </ol>
             </nav>
 
             <div class="col-12">
-                <div class="card overflow-auto">
-                    <!-- Member Information Form -->
-                    <div class="card-body mt-4">
-                        <form>
+                <form method="POST" action="{{ route('profile.store') }}">
+                    @csrf
+                    <div class="card overflow-auto">
+                        <div class="card-body mt-4">
                             <h1>Account Info</h1>
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberName">Username</label>
+                                        <label for="username">Username</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="memberName"
-                                            placeholder="" required>
+                                        <input type="text" class="form-control" name="username" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberName">Email</label>
+                                        <label for="email">Email</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="memberName"
-                                            placeholder="" required>
+                                        <input type="email" class="form-control" name="email" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberName">Password</label>
+                                        <label for="password">Password</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="memberName"
-                                            placeholder="" required>
+                                        <input type="password" class="form-control" name="password" required>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row m-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="confirm_password">Confirm Password</label>
+                                    </div>
+                                </div>
 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="confirm_password" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card overflow-auto">
+                        <div class="card-body mt-4">
                             <h1>Personal Info</h1>
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberName">Full Name</label>
+                                        <label for="fullname">Full Name</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="memberName"
-                                            placeholder="e.g., Jack Arson" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row m-3">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="memberEmail">Date of Birth</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="date" class="form-control" id="memberEmail" required>
+                                        <input type="text" class="form-control" name="fullname">
                                     </div>
                                 </div>
                             </div>
@@ -94,14 +92,13 @@
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberEmail">Address</label>
+                                        <label for="date_of_birth">Date of Birth</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="memberName"
-                                            placeholder="e.g., Kompleks Mahkamah Kota Kinabalu No. 1 Jalan Kebajikan" required>
+                                        <input type="date" class="form-control" name="date_of_birth">
                                     </div>
                                 </div>
                             </div>
@@ -109,16 +106,30 @@
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberGender">City</label>
+                                        <label for="address">Address</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <select class="form-control" id="memberGender" required>
-                                            <option value="Kota Kinabalu" selected>Kota Kinabalu</option>
-                                            <option value="male">1</option>
-                                            <option value="female">2</option>
+                                        <input type="text" class="form-control" name="address">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row m-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select class="form-control" name="city">
+                                            <option disabled selected>Please select</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
                                         </select>
                                     </div>
                                 </div>
@@ -127,16 +138,16 @@
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberGender">State</label>
+                                        <label for="state">State</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <select class="form-control" id="memberGender" required>
-                                            <option value="Sabah" selected>Sabah</option>
-                                            <option value="male">1</option>
-                                            <option value="female">2</option>
+                                        <select class="form-control" name="state">
+                                            <option disabled selected>Please select</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
                                         </select>
                                     </div>
                                 </div>
@@ -145,29 +156,13 @@
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberEmail">Postcode</label>
+                                        <label for="zip">Postcode</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" id="memberName"
-                                            placeholder="e.g., 88300" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row m-3">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="memberEmail">Contact Number (60+)</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="number" class="form-control" id="memberName"
-                                            placeholder="e.g., 0123456789" required>
+                                        <input type="number" class="form-control" name="zip">
                                     </div>
                                 </div>
                             </div>
@@ -175,29 +170,13 @@
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberEmail">Email</label>
+                                        <label for="phone">Contact Number (60+)</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="memberName"
-                                            placeholder="e.g., example@gmail.com" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row m-3">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="memberEmail">Occupation</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" id="memberName"
-                                            placeholder="e.g., Contract Teacher" required>
+                                        <input type="text" class="form-control" name="phone">
                                     </div>
                                 </div>
                             </div>
@@ -205,34 +184,30 @@
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberGender">Gender</label>
+                                        <label for="occupation">Occupation</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <select class="form-control" id="memberGender" required>
-                                            <option value="male" selected>Male</option>
-                                            <option value="female">Female</option>
-                                        </select>
+                                        <input type="text" class="form-control" name="occupation">
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Repeat the structure for other fields -->
-
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberType">Member Type</label>
+                                        <label for="gender">Gender</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <select class="form-control" id="memberType" required>
-                                            <option value="permanent" selected>Tetap</option>
-                                            <option value="associate">Bersekutu</option>
+                                        <select class="form-control" name="gender">
+                                            <option disabled selected>Please select</option>
+                                            <option value="1">1</option>
+                                            <option value="0">0</option>
                                         </select>
                                     </div>
                                 </div>
@@ -241,19 +216,26 @@
                             <div class="row m-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="memberType">Profile Picture</label>
+                                        <label for="member_type">Member Type</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="file" class="form-control" id="memberDOB"
-                                            placeholder="Masukkan gambar" required>
+                                        <select class="form-control" name="member_type">
+                                            <option disabled selected>Please select</option>
+                                            <option value="1">1</option>
+                                            <option value="0">0</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <div class="container mt-5 d-flex justify-content-between">
+                    <div class="card overflow-auto">
+                        <div class="card-body mt-4">
+                            <div class="d-flex justify-content-between">
                                 <h1>Family Info</h1>
                                 <div class="text-end">
                                     <button type="button" class="btn btn-success" onclick="addRow()">+</button>
@@ -263,17 +245,15 @@
 
                             <div class="row m-1">
                                 <div class="col-md-8 mb-3">
-                                    <input type="text" class="form-control" id="input1"
-                                        placeholder="Name" required>
+                                    <input type="text" class="form-control" id="input1">
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <select class="form-control" id="relationship" required>
+                                    <select class="form-control" id="relationship">
                                         <option value="" disabled selected>Select Relationship</option>
                                         <option value="spouse">Spouse</option>
                                         <option value="parent">Parent</option>
                                         <option value="child">Child</option>
                                         <option value="sibling">Sibling</option>
-                                        <!-- Add more relationship options as needed -->
                                     </select>
                                 </div>
                             </div>
@@ -284,10 +264,10 @@
 
                                 <button type="submit" class="btn btn-primary">Add</button>
                             </div>
-
-                        </form><!-- End Member Information Form -->
+                        </div>
                     </div>
-                </div>
+
+                </form>
             </div>
         </div>
     </main>

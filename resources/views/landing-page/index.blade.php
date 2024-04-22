@@ -51,12 +51,20 @@
         }
 
         #popup-content {
+            position: relative;
             background: #fff;
             padding: 20px;
             max-width: 90%;
             max-height: 90%;
             overflow: auto;
             text-align: center;
+        }
+
+        #close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -67,10 +75,11 @@
     <div id="popup-container">
         <!-- Popup Content -->
         <div id="popup-content">
-            <p>This is your popup title. Customize it as needed.</p>
+            <div id="close-button" onclick="closePopup()">X</div>
+            <p>Set the title here.</p>
             <img src="https://images.unsplash.com/photo-1522543558187-768b6df7c25c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Description of the event">
-            <button class="mt-5" onclick="closePopup()">Close</button>
+            {{-- <button class="mt-5" onclick="closePopup()">Close</button> --}}
         </div>
     </div>
 
@@ -79,7 +88,6 @@
     <header id="header" class="row-header">
 
         <div class="header-logo">
-            {{-- <a href="index.html"></a> --}}
             <img src="images/sib_logo.png" data-aos="fade-up">
         </div>
 
@@ -192,8 +200,6 @@
 
                 <div class="bgrid feature" data-aos="fade-up">
 
-                    {{-- <span class="icon"><i class="icon-window"></i></span> --}}
-
                     <div class="service-content">
 
                         <h3>Mission</h3>
@@ -209,8 +215,6 @@
                 </div> <!-- /bgrid -->
 
                 <div class="bgrid feature" data-aos="fade-up">
-
-                    {{-- <span class="icon"><i class="icon-image"></i></span> --}}
 
                     <div class="service-content">
                         <h3>Vision</h3>
@@ -228,7 +232,6 @@
 
                 <div class="bgrid feature" data-aos="fade-up">
 
-                    {{-- <span class="icon"><i class="icon-paint-brush"></i></span> --}}
 
                     <div class="service-content">
                         <h3>Future</h3>
