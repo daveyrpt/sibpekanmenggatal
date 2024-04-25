@@ -11,7 +11,7 @@ class AccountController extends Controller
 {
     public function index()
     {
-        $userAccount = User::where('id', Auth::user()->id)->first();
+        $userAccount = User::find(Auth::user()->id);
 
         return view('account-setting', compact('userAccount'));
     }
@@ -24,13 +24,14 @@ class AccountController extends Controller
             'password' => ['required', 'string', 'min:8'],
             'confirm_password' => ['required', 'string', 'min:8'],
         ]); 
-       
+
+
         if ($input['password'] != $input['confirm_password']) {
             alert()->error('Update Failed','Password and confirm password does not match!');    
             return redirect()->route('account-setting.index');
         }
 
-        $userAccount = User::where('id', Auth::user()->id)->first();
+        $userAccount = User::find($request->userId);
 
         $userAccount->name = $input['username'];
         $userAccount->email = $input['email'];

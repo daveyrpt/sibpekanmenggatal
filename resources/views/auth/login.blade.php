@@ -17,20 +17,20 @@
                     <div class="card-body">
                         <div class="pt-4 pb-2">
                             <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                            <p class="text-center small">Enter your username & password to login</p>
+                            <p class="text-center small">Enter your email and password to login</p>
                         </div>
 
                         <form method="POST" action="{{ route('login') }}" class="row g-3 needs-validation" novalidate>
                             @csrf
 
                             <div class="col-12">
-                                <label for="yourUsername" class="form-label">Username</label>
+                                <label for="yourUsername" class="form-label">Email</label>
                                 <div class="input-group has-validation">
-                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                    
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                    <div class="invalid-feedback">Please enter your username.</div>
+                                    <div class="invalid-feedback">Please enter your email.</div>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -82,7 +82,6 @@
                     </div>
                 </div>
             </div>
-
 
         </div>
     </div>

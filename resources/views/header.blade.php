@@ -17,13 +17,20 @@
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
                         alt="Profile" class="rounded-circle mx-2">
-                <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
+                <span class="d-none d-md-block dropdown-toggle ps-2">Welcome, {{ Auth::user()->name }}</span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6>{{ Auth::user()->name }}</h6>
-                        <span>{{ Auth::user()->role }}</span>
+                        @php
+                            $user = Auth::user();
+                        @endphp
+
+                        <h6>{{ $user->name }}</h6>
+
+                        <span class="text-capitalize badge {{ $user->role === 'admin' ? 'bg-warning' : ($user->profile && $user->profile->member_type === 'tetap' ? 'bg-primary' : 'bg-success') }}">
+                            {{ $user->role === 'admin' ? 'Administrator' : ($user->profile ? $user->profile->member_type : 'Unknown') }}
+                        </span>
                     </li>
                     <li>
                         <hr class="dropdown-divider">

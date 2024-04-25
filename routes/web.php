@@ -14,16 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('landing-page/index');
+return view('landing-page/index');
 })->name('index');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home.index');
 
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
-
-Route::get('/profile/view/{userId}', [App\Http\Controllers\ProfileController::class, 'view'])->name('profile.view');
+Route::get('/profile/view/{userId}', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
 
 Route::get('/profile/create', [App\Http\Controllers\ProfileController::class, 'create'])->name('profile.create');
 
@@ -35,6 +33,10 @@ Route::post('/profile/{userId}/update', [App\Http\Controllers\ProfileController:
 
 Route::delete('/profile/{userId}/delete', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
 
+Route::post('/family/{userId}', [App\Http\Controllers\FamilyController::class, 'update'])->name('family.update');
+
+Route::delete('/family/{userId}', [App\Http\Controllers\FamilyController::class, 'destroy'])->name('family.destroy');
+
 Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
 
 Route::post('/news', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store');
@@ -43,4 +45,4 @@ Route::post('/news/update-status', [App\Http\Controllers\NewsController::class, 
 
 Route::get('/account-setting', [App\Http\Controllers\AccountController::class, 'index'])->name('account-setting.index');
 
-Route::post('/account-setting/update', [App\Http\Controllers\AccountController::class, 'update'])->name('account-setting.update');
+Route::post('/account-setting{userId}/update', [App\Http\Controllers\AccountController::class, 'update'])->name('account-setting.update');

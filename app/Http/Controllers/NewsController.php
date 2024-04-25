@@ -16,7 +16,8 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:jpg,jpeg,png|max:2048'
+            'title' => 'required',
+            'file' => 'required|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($request->hasFile('file')) {

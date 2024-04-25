@@ -13,7 +13,7 @@
 
         <li class="nav-item">
             <a class="nav-link {{ Request::is('profile*') ? '' : 'collapsed' }}"
-                href="{{ route('profile.index') }}">
+                href="{{ route('profile.index', Auth::user()->id) }}">
                 <i class="bi bi-people-fill"></i>
                 <span>Profile</span>
             </a>

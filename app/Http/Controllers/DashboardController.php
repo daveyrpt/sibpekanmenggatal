@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Carbon;
+use App\Models\User;
 use App\Models\UserProfile;
 
 class DashboardController extends Controller
@@ -25,8 +26,9 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $listOfAdmin = User::where('role', 'admin')->pluck('id');
 
-        $userProfile = UserProfile::all();
+        $userProfile = UserProfile::whereNotIn('user_id', $listOfAdmin)->get();
 
         // total permanant users
         $totalUsersThisYearForPermanentMember = UserProfile::where('member_type', 'tetap')->whereYear('created_at', Carbon::now()->year)->count();
