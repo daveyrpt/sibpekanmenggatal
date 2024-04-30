@@ -38,8 +38,12 @@ return [
     'please enter your password' => 'Sila masukkan kata laluan anda',
     'success' => 'Berjaya',
     'warning' => 'Amaran',
+    'failed' => 'Gagal',
+    'information successfully updated' => 'Maklumat berjaya dikemaskini',
     'delete this user' => 'Hapus akaun ini',
-    'yes, delete it' => 'Ya, hapus akaun ini',
+    'update this user' => 'Kemaskini akaun ini',
+    'yes, delete it' => 'Ya, hapus akaun',
+    'yes, update it' => 'Ya, kemaskini akaun',
     'cancel' => 'Batal',
     'new member added successfully' => 'Ahli Baru berjaya didaftar',
     'profile updated successfully' => 'Profil berjaya dikemaskini',
@@ -48,6 +52,7 @@ return [
     'only one news item can be featured at a time, with file formats limited to JPG, JPEG, or PNG and a maximum size of 2MB' => 'Hanya satu item berita boleh dipamerkan sekaligus, dengan format fail yang dibenarkan adalah JPG, JPEG, atau PNG dan saiz maksimum 2MB',
     'news successfully added' => 'Berita berjaya ditambah',
     'news status changed' => 'Status berita berjaya ditukar',
+    'password and confirm password does not match' => 'Kata laluan dan kata laluan semasa tidak sepadan',
 
     // login
     'login to your account' => 'Log Masuk ke Akaun Anda',

@@ -64,14 +64,14 @@
             event.preventDefault();
 
             Swal.fire({
-                title: 'Warning',
-                text: 'Update this account setting?',
-                cancelButtonText: 'Cancel',
+                title: '{{ __('message.warning') }}',
+                text: '{{ __('message.update this user') }}?',
+                cancelButtonText: '{{ __('message.cancel') }}',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, update it!'
+                confirmButtonText: '{{ __("message.yes, update it") }}',
             }).then((result) => {
                 
                 if (result.isConfirmed) {

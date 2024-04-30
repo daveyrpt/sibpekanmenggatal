@@ -20,14 +20,14 @@ class AccountController extends Controller
     {
         $input = $request->validate([
             'username' => 'required',
-            'email' => 'required',
+            'email' => ['required'],
             'password' => ['required', 'string', 'min:8'],
-            'confirm_password' => ['required', 'string', 'min:8'],
+            'confirm_password' => ['required', 'string', 'min:8', 'same:password']
         ]); 
 
 
         if ($input['password'] != $input['confirm_password']) {
-            alert()->error('Update Failed','Password and confirm password does not match!');    
+            alert()->success( __('message.failed'), __('message.password and confirm password does not match')); 
             return redirect()->route('account-setting.index');
         }
 
@@ -38,7 +38,7 @@ class AccountController extends Controller
         $userAccount->password = Hash::make($input['password']);
         $userAccount->save();
 
-        alert()->success('Success','Account updated successfully!');
+        alert()->success( __('message.success'), __('message.information successfully updated'));
 
         return redirect()->route('account-setting.index');
     }
