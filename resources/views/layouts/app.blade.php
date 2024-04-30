@@ -34,33 +34,29 @@
 
 <body>
     <div id="app"class="pt-5">
-        @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+        @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
 
-        
+        {{-- Content --}}
+        @guest
+            @yield('content')
+        @else
+            <main id="main" class="main">
+                {{-- Error Message --}}
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-            {{-- Error Message --}}
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            {{-- Content --}}
-            @guest
-                @yield('content')
-            @else
-<main id="main" class="main">
                 @yield('content')
                 @include('header')
                 @include('sidebar')
-</main>
-            @endguest
-        
-
+            </main>
+        @endguest
 
     </div>
 
