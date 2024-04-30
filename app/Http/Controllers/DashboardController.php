@@ -27,6 +27,10 @@ class DashboardController extends Controller
 
     public function index()
     {
+        if(auth()->user()->role != 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         $listOfAdmin = User::where('role', 'admin')->pluck('id');
 
         $userProfile = UserProfile::whereNotIn('user_id', $listOfAdmin)->get();

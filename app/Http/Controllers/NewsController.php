@@ -9,12 +9,20 @@ class NewsController extends Controller
 {
     public function index()
     {
+        if(auth()->user()->role != 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         $news = News::first();
         return view('news.index', compact('news'));
     }
 
     public function store(Request $request)
     {
+        if(auth()->user()->role != 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         $request->validate([
             'title' => 'required',
             'file' => 'required|mimes:jpg,jpeg,png|max:2048',
@@ -50,6 +58,9 @@ class NewsController extends Controller
 
     public function updateStatus(Request $request) 
     {
+        if(auth()->user()->role != 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
 
         News::find($request->id)->update([
             'status' => $request->input('status') ? 1 : 0

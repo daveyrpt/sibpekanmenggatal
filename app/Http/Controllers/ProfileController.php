@@ -14,9 +14,17 @@ class ProfileController extends Controller
 {
     public function index($userId)
     {
+        if(auth()->user()->role != 'admin' && auth()->user()->id != $userId) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $userAccount = User::find($userId);
 
         $userProfile = UserProfile::where('user_id', $userId)->first();
+
+        if(!$userAccount || !$userProfile) {
+            abort(404);
+        }
 
         $userFamily = Family::where('user_id', $userId)->get()->toArray();
 
@@ -25,11 +33,19 @@ class ProfileController extends Controller
 
     public function create()
     {
+        if(auth()->user()->role != 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('profile.create');
     }
 
     public function store(Request $request)
     {
+        if(auth()->user()->role != 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         $input = $request->validate([           
             'username' => 'required',
             'email' => ['required', 'unique:users'],
@@ -57,10 +73,17 @@ class ProfileController extends Controller
 
     public function edit($userId)
     {
-        # todo only allow only user to check their own profile
+        if(auth()->user()->role != 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         $userAccount = User::find($userId);
 
         $userProfile = UserProfile::where('user_id', $userId)->first();
+
+        if(!$userAccount || !$userProfile) {
+            abort(404);
+        }
 
         $userFamily = Family::where('user_id', $userId)->get()->toArray();
 
@@ -69,6 +92,10 @@ class ProfileController extends Controller
 
     public function update(Request $request, $userId) 
     {
+        if(auth()->user()->role != 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         $input = $request->validate($this->validationRules());
 
         $userProfile = UserProfile::updateOrCreate(
@@ -83,6 +110,10 @@ class ProfileController extends Controller
 
     public function destroy($userId)
     {
+        if(auth()->user()->role != 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         $userAccount = User::find($userId);
 
         $userProfile = UserProfile::where('user_id', $userId)->first();
