@@ -33,7 +33,7 @@ class NewsController extends Controller
             if ($oldFileModel) {
                 $oldFilePath = public_path($oldFileModel->file_path);
                 if (file_exists($oldFilePath)) {
-                    unlink($oldFilePath);
+                    //unlink($oldFilePath);
                     $oldFileModel->delete();
                 }
             }
