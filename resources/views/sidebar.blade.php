@@ -30,7 +30,7 @@
 
         <li class="nav-item">
             <a class="nav-link {{ Request::is('account-setting*') ? '' : 'collapsed' }}"
-                href="{{ route('account-setting.index', Auth::user()->id) }}">
+                href="{{ route('account-setting.index') }}">
                 <i class="bi bi-nut-fill"></i>
                 <span>{{ __('message.setting') }}</span>
             </a>

@@ -44,4 +44,4 @@ Route::post('/news/update-status', [App\Http\Controllers\NewsController::class, 
 
 Route::get('/account-setting', [App\Http\Controllers\AccountController::class, 'index'])->name('account-setting.index');
 
-Route::post('/account-setting{userId}/update', [App\Http\Controllers\AccountController::class, 'update'])->name('account-setting.update');
+Route::post('/account-setting/{userId}/update', [App\Http\Controllers\AccountController::class, 'update'])->name('account-setting.update');
