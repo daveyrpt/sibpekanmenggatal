@@ -1,8 +1,6 @@
 {{-- To Do List  --}}
+1. generated family profile for example how the password and email should be
+2. Family account check for family members.
 
-1. Error message cause login/register layout to be broken.
 
-2. Make page check if user or admin can view it
-
-3. redirect on login depends on the user-
 
