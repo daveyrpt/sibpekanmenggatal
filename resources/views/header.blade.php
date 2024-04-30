@@ -17,7 +17,7 @@
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
                         alt="Profile" class="rounded-circle mx-2">
-                <span class="d-none d-md-block dropdown-toggle ps-2">Welcome, {{ Auth::user()->name }}</span>
+                <span class="d-none d-md-block dropdown-toggle ps-2 text-capitalize">{{ __('message.welcome') }}, {{ Auth::user()->name }}</span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -26,7 +26,7 @@
                             $user = Auth::user();
                         @endphp
 
-                        <h6>{{ $user->name }}</h6>
+                        <h6 class="text-capitalize">{{ $user->name }}</h6>
 
                         <span class="text-capitalize badge {{ $user->role === 'admin' ? 'bg-warning' : ($user->profile && $user->profile->member_type === 'tetap' ? 'bg-primary' : 'bg-success') }}">
                             {{ $user->role === 'admin' ? 'Administrator' : ($user->profile ? $user->profile->member_type : 'Unknown') }}
@@ -39,7 +39,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.index', Auth::user()->id) }}">
                             <i class="bi bi-person"></i>
-                            <span>My Profile</span>
+                            <span>{{ __('message.my profile') }}</span>
                         </a>
                     </li>
                     <li>
@@ -49,7 +49,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="{{ route('account-setting.index') }}">
                             <i class="bi bi-gear"></i>
-                            <span>Account Settings</span>
+                            <span>{{ __('message.account setting') }}</span>
                         </a>
                     </li>
                     <li>
@@ -57,13 +57,9 @@
                     </li>
 
                     <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
                         <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="bi bi-box-arrow-right"></i>
-                            <span>Sign Out</span>
+                            <span>{{ __('message.logout') }}</span>
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

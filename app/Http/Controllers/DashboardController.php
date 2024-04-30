@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\UserProfile;
 
@@ -78,6 +79,28 @@ class DashboardController extends Controller
             $percentageAllianceIncreaseDay = (($previousAllianceDay - $totalUsersTodayForAllianceMember) / $previousAllianceDay) * 100;
         }
 
+        $totalVisitorToday = DB::table('ip_address_logs')->whereDate('created_at', Carbon::today())->count();
+        $totalVisitorThisMonth = DB::table('ip_address_logs')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $totalVisitorThisYear = DB::table('ip_address_logs')->whereYear('created_at', Carbon::now()->year)->count();
+
+        $previousTotalVisitorDay = DB::table('ip_address_logs')->whereDate('created_at', Carbon::now()->subDay()->day)->count();
+        $previousTotalVisitorMonth = DB::table('ip_address_logs')->whereYear('created_at', Carbon::now()->subMonth()->year)->whereMonth('created_at', Carbon::now()->subMonth()->month)->count();
+        $previousTotalVisitorYear = DB::table('ip_address_logs')->whereYear('created_at', Carbon::now()->subYear()->year)->count();
+
+        $percentagePreviousTotalVisitorDay = $percentagePreviousTotalVisitorMonth = $percentagePreviousTotalVisitorYear = 0;
+
+        if ($previousTotalVisitorDay > $totalVisitorToday) {
+            $percentagePreviousTotalVisitorDay = (($previousTotalVisitorDay - $totalVisitorToday) / $previousTotalVisitorDay) * 100;
+        }
+
+        if ($previousTotalVisitorMonth > $totalVisitorThisMonth) {
+            $percentagePreviousTotalVisitorMonth = (($previousTotalVisitorMonth - $totalVisitorThisMonth) / $previousTotalVisitorMonth) * 100;
+        }
+
+        if ($previousTotalVisitorYear > $totalVisitorThisYear) {
+            $percentagePreviousTotalVisitorYear = (($previousTotalVisitorYear - $totalVisitorThisYear) / $previousTotalVisitorYear) * 100;
+        }
+
         return view('dashboard', compact(
             'userProfile', 
             'totalUsersThisYearForPermanentMember', 
@@ -91,7 +114,13 @@ class DashboardController extends Controller
             'percentagePermanentIncreaseDay',
             'percentageAllianceIncreaseYear',
             'percentageAllianceIncreaseMonth',
-            'percentageAllianceIncreaseDay'
+            'percentageAllianceIncreaseDay',
+            'totalVisitorToday',
+            'totalVisitorThisMonth',
+            'totalVisitorThisYear',
+            'percentagePreviousTotalVisitorDay',
+            'percentagePreviousTotalVisitorMonth',
+            'percentagePreviousTotalVisitorYear'
         ));
     }
 

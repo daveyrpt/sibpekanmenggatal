@@ -42,7 +42,7 @@ class NewsController extends Controller
             $fileModel->file_path = '/images/' . $fileName;
             $fileModel->save();
 
-            alert()->success('Success', 'News have been updated!');
+            alert()->success( __('message.success'), __('message.news successfully added'));
 
             return redirect()->back();
         }
@@ -55,7 +55,7 @@ class NewsController extends Controller
             'status' => $request->input('status') ? 1 : 0
         ]);
 
-        alert()->success('Success', 'Status have been updated!');
+        alert()->success( __('message.success'), __('message.news status changed'));
 
         return redirect()->back();
     }

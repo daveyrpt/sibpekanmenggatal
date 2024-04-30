@@ -2,24 +2,25 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Profile</h1>
+        <h1>{{ __('message.profile') }}</h1>
         <nav class="d-flex justify-content-between">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item active">Profile</li>
+                <li class="breadcrumb-item">{{ __('message.profile') }}</li>
+                <li class="breadcrumb-item active">{{$userAccount->name}}</li>
             </ol>
-            <a href="{{ route('profile.edit', ['userId' => $userProfile->user_id ?? Auth::user()->id]) }}" class="btn btn-secondary mb-2 float-right">Edit</a>
+            <a href="{{ route('profile.edit', ['userId' => $userProfile->user_id ?? Auth::user()->id]) }}" class="btn btn-secondary mb-2 float-right">{{ __('message.edit') }}</a>
         </nav>
 
         <div class="col-12">
             @if(Auth::user()->role == 'admin')
             <div class="card overflow-auto">
                 <div class="card-body mt-4">
-                    <h1>Account Info</h1>
+                    <h1>{{ __('message.account information') }}</h1>
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberName">Username</label>
+                                <label for="memberName">{{ __('message.username') }}</label>
                             </div>
                         </div>
 
@@ -32,7 +33,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberName">Email</label>
+                                <label for="memberName">{{ __('message.email') }}</label>
                             </div>
                         </div>
 
@@ -48,11 +49,11 @@
 
             <div class="card overflow-auto">
                 <div class="card-body mt-4">
-                    <h1>Personal Info</h1>
+                    <h1>{{ __('message.personal information') }}</h1>
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberName">Full Name</label>
+                                <label for="memberName">{{ __('message.fullname') }}</label>
                             </div>
                         </div>
 
@@ -66,7 +67,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberEmail">Date of Birth</label>
+                                <label for="memberEmail">{{ __('message.date of birth') }}</label>
                             </div>
                         </div>
 
@@ -80,7 +81,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberEmail">Address</label>
+                                <label for="memberEmail">{{ __('message.address') }}</label>
                             </div>
                         </div>
 
@@ -94,7 +95,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberGender">City</label>
+                                <label for="memberGender">{{ __('message.city') }}</label>
                             </div>
                         </div>
 
@@ -108,7 +109,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberGender">State</label>
+                                <label for="memberGender">{{ __('message.state') }}</label>
                             </div>
                         </div>
 
@@ -122,7 +123,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberEmail">Postcode</label>
+                                <label for="memberEmail">{{ __('message.postcode') }}</label>
                             </div>
                         </div>
 
@@ -136,7 +137,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberEmail">Contact Number (60+)</label>
+                                <label for="memberEmail">{{ __('message.contact number') }} (60+)</label>
                             </div>
                         </div>
 
@@ -150,7 +151,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberEmail">Occupation</label>
+                                <label for="memberEmail">{{ __('message.occupation') }}</label>
                             </div>
                         </div>
 
@@ -164,7 +165,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberGender">Gender</label>
+                                <label for="memberGender">{{ __('message.gender') }}</label>
                             </div>
                         </div>
 
@@ -178,7 +179,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberType">Member Type</label>
+                                <label for="memberType">{{ __('message.member type') }}</label>
                             </div>
                         </div>
 
@@ -189,26 +190,13 @@
                         </div>
                     </div>
 
-                    <div class="row m-3">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="memberType">Profile Picture</label>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <p>{{ $userProfile->member_type ?? '-' }}</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <div class="card overflow-auto">
                 <div class="card-body mt-4">
                     <div class="container m-3">
-                        <h1>Family Info</h1>
+                        <h1>{{ __('message.family information') }}</h1>
                     </div>
 
                     @foreach($userFamily as $index => $member)

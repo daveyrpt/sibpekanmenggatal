@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Add Member</h1>
+        <h1>{{ __('message.add') }} {{ __('message.user') }}</h1>
         <nav class="d-flex justify-content-between">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item active">Create</li>
+                <li class="breadcrumb-item">{{ __('message.profile') }}</li>
+                <li class="breadcrumb-item active">{{ __('message.add') }}</li>
             </ol>
         </nav>
 
@@ -15,11 +16,11 @@
                 @csrf
                 <div class="card overflow-auto">
                     <div class="card-body mt-4">
-                        <h1>Account Info</h1>
+                        <h1>{{ __('message.account information') }}</h1>
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="username">Username</label>
+                                    <label for="username">{{ __('message.username') }}</label>
                                 </div>
                             </div>
 
@@ -32,7 +33,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="email">Email</label>
+                                    <label for="email">{{ __('message.email') }}</label>
                                 </div>
                             </div>
 
@@ -45,7 +46,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="password">Password</label>
+                                    <label for="password">{{ __('message.password') }}</label>
                                 </div>
                             </div>
 
@@ -58,7 +59,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="confirm_password">Confirm Password</label>
+                                    <label for="confirm_password">{{ __('message.confirm password') }}</label>
                                 </div>
                             </div>
 
@@ -73,11 +74,11 @@
 
                 <div class="card overflow-auto">
                     <div class="card-body mt-4">
-                        <h1>Personal Info</h1>
+                        <h1>{{ __('message.personal information') }}</h1>
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="fullname">Full Name</label>
+                                    <label for="fullname">{{ __('message.fullname') }}</label>
                                 </div>
                             </div>
 
@@ -91,7 +92,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="date_of_birth">Date of Birth</label>
+                                    <label for="date_of_birth">{{ __('message.date of birth') }}</label>
                                 </div>
                             </div>
 
@@ -105,7 +106,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="address">Address</label>
+                                    <label for="address">{{ __('message.address') }}</label>
                                 </div>
                             </div>
 
@@ -119,17 +120,13 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="city">City</label>
+                                    <label for="city">{{ __('message.city') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <select class="form-control" name="city">
-                                        <option disabled selected>Please select</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                    </select>
+                                        <input type="text" class="form-control" name="city">
                                 </div>
                             </div>
                         </div>
@@ -137,16 +134,30 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="state">State</label>
+                                    <label for="state">{{ __('message.state') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <select class="form-control" name="state">
-                                        <option disabled selected>Please select</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
+                                        <option disabled selected>{{ __('message.please select') }}</option>
+                                        <option value="Sabah">Sabah</option>
+                                        <option value="Labuan">Labuan</option>
+                                        <option value="Sarawak">Sarawak</option>
+                                        <option value="Johor">Johor</option>
+                                        <option value="Kedah">Kedah</option>
+                                        <option value="Kelantan">Kelantan</option>
+                                        <option value="Melaka">Melaka</option>
+                                        <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                        <option value="Pahang">Pahang</option>
+                                        <option value="Perak">Perak</option>
+                                        <option value="Perlis">Perlis</option>
+                                        <option value="Penang">Penang</option>
+                                        <option value="Selangor">Selangor</option>
+                                        <option value="Terengganu">Terengganu</option>
+                                        <option value="Kuala Lumpur">Kuala Lumpur</option>
+                                        <option value="Putrajaya">Putrajaya</option>
                                     </select>
                                 </div>
                             </div>
@@ -155,7 +166,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="zip">Postcode</label>
+                                    <label for="zip">{{ __('message.postcode') }}</label>
                                 </div>
                             </div>
 
@@ -169,7 +180,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phone">Contact Number (60+)</label>
+                                    <label for="phone">{{ __('message.contact number') }} (60+)</label>
                                 </div>
                             </div>
 
@@ -183,7 +194,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="occupation">Occupation</label>
+                                    <label for="occupation">{{ __('message.occupation') }}</label>
                                 </div>
                             </div>
 
@@ -197,16 +208,16 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="gender">Gender</label>
+                                    <label for="gender">{{ __('message.gender') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <select class="form-control" name="gender">
-                                        <option disabled selected>Please select</option>
-                                        <option value="1">1</option>
-                                        <option value="0">0</option>
+                                        <option disabled selected>{{ __('message.please select') }}</option>
+                                        <option value="male">Lelaki</option>
+                                        <option value="female">Perempuan</option>
                                     </select>
                                 </div>
                             </div>
@@ -215,53 +226,23 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="member_type">Member Type</label>
+                                    <label for="member_type">{{ __('message.member type') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <select class="form-control" name="member_type">
-                                        <option disabled selected>Please select</option>
-                                        <option value="1">1</option>
-                                        <option value="0">0</option>
+                                        <option disabled selected>{{ __('message.please select') }}</option>
+                                        <option value="bersekutu">{{ __('message.alliance member') }}</option>
+                                        <option value="tetap">{{ __('message.permanent member') }}</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="card overflow-auto">
-                    <div class="card-body mt-4">
-                        <div class="d-flex justify-content-between">
-                            <h1>Family Info</h1>
-                            <div class="text-end">
-                                <button type="button" class="btn btn-success" onclick="addRow()">+</button>
-                                <button type="button" class="btn btn-danger" onclick="removeLastRow()">-</button>
-                            </div>
-                        </div>
-
-                        <div class="row m-1">
-                            <div class="col-md-8 mb-3">
-                                <input type="text" class="form-control" id="input1">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <select class="form-control" id="relationship">
-                                    <option value="" disabled selected>Select Relationship</option>
-                                    <option value="spouse">Spouse</option>
-                                    <option value="parent">Parent</option>
-                                    <option value="child">Child</option>
-                                    <option value="sibling">Sibling</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div id="dynamicRows"></div>
 
                         <div class="text-center mt-3">
-
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button class="btn btn-primary">{{ __('message.add') }}</button>
                         </div>
                     </div>
                 </div>
@@ -270,31 +251,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
-        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
-    <script>
-        function addRow() {
-            var newRow = '<div class="row m-1">' +
-                '<div class="col-md-8 mb-3">' +
-                '<input type="text" class="form-control" name="nama[]" placeholder="Name" required>' +
-                '</div>' +
-                '<div class="col-md-4 mb-3">' +
-                '<select class="form-control" name="hubungan[]" required>' +
-                '<option value="" disabled selected>Select Relationship</option>' +
-                '<option value="spouse">Spouse</option>' +
-                '<option value="parent">Parent</option>' +
-                '<option value="child">Child</option>' +
-                '<option value="sibling">Sibling</option>' +
-                '</select>' +
-                '</div>' +
-                '</div>';
-
-            $('#dynamicRows').append(newRow);
-        }
-
-        function removeLastRow() {
-            $('#dynamicRows .row:last').remove();
-        }
-    </script>

@@ -2,11 +2,13 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Edit Member</h1>
+        <h1>{{ __('message.edit') }} {{ __('message.user') }}</h1>
         <nav class="d-flex justify-content-between">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item active">Edit</li>
+                <li class="breadcrumb-item">{{ __('message.profile') }}</li>
+                <li class="breadcrumb-item">{{ __('message.edit') }}</li>
+                <li class="breadcrumb-item active">{{$userAccount->name}}</li>
             </ol>
         </nav>
 
@@ -18,62 +20,62 @@
                 @if(Auth::user()->role == 'admin')
                 <div class="card overflow-auto">
                     <div class="card-body mt-4">
-                        <h1>Account Info</h1>
+                        <h1>{{ __('message.account information') }}</h1>
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">Username</label>
+                                    <label for="name">{{ __('message.username') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="name" value="{{ $userAccount->name }}">
+                                    <input type="text" class="form-control" name="name" value="{{ $userAccount->name }}" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="email">Email</label>
+                                    <label for="email">{{ __('message.email') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" name="email" value="{{ $userAccount->email }}">
+                                    <input type="email" class="form-control" name="email" value="{{ $userAccount->email }}" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="password">Password</label>
+                                    <label for="password">{{ __('message.password') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password">
+                                    <input type="password" class="form-control" name="password" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="confirm_password">Confirm Password</label>
+                                    <label for="confirm_password">{{ __('message.confirm password') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="confirm_password">
+                                    <input type="password" class="form-control" name="confirm_password" required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="text-center mt-5">
-                            <button type="submit" id="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-primary">{{ __('message.edit') }}</button>
                         </div>
                     </div>
                 </div>
@@ -85,11 +87,11 @@
 
                 <div class="card overflow-auto">
                     <div class="card-body mt-4">
-                        <h1>Personal Info</h1>
+                        <h1>{{ __('message.personal information') }}</h1>
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="fullname">Full Name</label>
+                                    <label for="fullname">{{ __('message.fullname') }}</label>
                                 </div>
                             </div>
 
@@ -103,27 +105,13 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="date_of_birth">Date of Birth</label>
+                                    <label for="date_of_birth">{{ __('message.date of birth') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="date" class="form-control" name="date_of_birth">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row m-3">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="address">Address</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="address">
+                                    <input type="date" class="form-control" name="date_of_birth" value="{{ $userProfile->date_of_birth ?? ''}}">
                                 </div>
                             </div>
                         </div>
@@ -131,17 +119,13 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="city">City</label>
+                                    <label for="address">{{ __('message.address') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <select class="form-control" name="city">
-                                        <option disabled selected>Please select</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="address" value="{{ $userProfile->address ?? ''}}">
                                 </div>
                             </div>
                         </div>
@@ -149,16 +133,44 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="state">State</label>
+                                    <label for="city">{{ __('message.city') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="city" value="{{ $userProfile->city ?? ''}}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="state">{{ __('message.state') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <select class="form-control" name="state">
-                                        <option disabled selected>Please select</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
+                                        <option disabled selected>{{ __('message.please select') }}</option>
+                                        <option value="Sabah" {{ $userProfile->state == 'Sabah' ? 'selected' : ''}}>Sabah</option>
+                                        <option value="Labuan" {{ $userProfile->state == 'Labuan' ? 'selected' : ''}}>Labuan</option>
+                                        <option value="Sarawak" {{ $userProfile->state == 'Sarawak' ? 'selected' : ''}}>Sarawak</option>
+                                        <option value="Johor" {{ $userProfile->state == 'Johor' ? 'selected' : ''}}>Johor</option>
+                                        <option value="Kedah" {{ $userProfile->state == 'Kedah' ? 'selected' : ''}}>Kedah</option>
+                                        <option value="Kelantan" {{ $userProfile->state == 'Kelantan' ? 'selected' : ''}}>Kelantan</option>
+                                        <option value="Melaka" {{ $userProfile->state == 'Melaka' ? 'selected' : ''}}>Melaka</option>
+                                        <option value="Negeri Sembilan" {{ $userProfile->state == 'Negeri Sembilan' ? 'selected' : ''}}>Negeri Sembilan</option>
+                                        <option value="Pahang" {{ $userProfile->state == 'Pahang' ? 'selected' : ''}}>Pahang</option>
+                                        <option value="Perak" {{ $userProfile->state == 'Perak' ? 'selected' : ''}}>Perak</option>
+                                        <option value="Perlis" {{ $userProfile->state == 'Perlis' ? 'selected' : ''}}>Perlis</option>
+                                        <option value="Penang" {{ $userProfile->state == 'Penang' ? 'selected' : ''}}>Penang</option>
+                                        <option value="Selangor" {{ $userProfile->state == 'Selangor' ? 'selected' : ''}}>Selangor</option>
+                                        <option value="Terengganu" {{ $userProfile->state == 'Terengganu' ? 'selected' : ''}}>Terengganu</option>
+                                        <option value="Kuala Lumpur" {{ $userProfile->state == 'Kuala Lumpur' ? 'selected' : ''}}>Kuala Lumpur</option>
+                                        <option value="Putrajaya" {{ $userProfile->state == 'Putrajaya' ? 'selected' : ''}}>Putrajaya</option>
                                     </select>
                                 </div>
                             </div>
@@ -167,27 +179,13 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="zip">Postcode</label>
+                                    <label for="zip">{{ __('message.postcode') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="number" class="form-control" name="zip">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row m-3">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="phone">Contact Number (60+)</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="phone">
+                                    <input type="number" class="form-control" name="zip" value="{{ $userProfile->zip ?? ''}}">
                                 </div>
                             </div>
                         </div>
@@ -195,13 +193,13 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="occupation">Occupation</label>
+                                    <label for="phone">{{ __('message.contact number') }} (60+)</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="occupation">
+                                    <input type="text" class="form-control" name="phone" value="{{ $userProfile->phone ?? ''}}">
                                 </div>
                             </div>
                         </div>
@@ -209,16 +207,30 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="gender">Gender</label>
+                                    <label for="occupation">{{ __('message.occupation') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="occupation" value="{{ $userProfile->occupation ?? ''}}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="gender">{{ __('message.gender') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <select class="form-control" name="gender">
-                                        <option disabled selected>Please select</option>
-                                        <option value="1">1</option>
-                                        <option value="0">0</option>
+                                        <option disabled selected>{{ __('message.please select') }}</option>
+                                        <option value="male" {{ $userProfile->gender == 'male' ? 'selected' : ''}}>Lelaki</option>
+                                        <option value="female" {{ $userProfile->gender == 'female' ? 'selected' : ''}}>Perempuan</option>
                                     </select>
                                 </div>
                             </div>
@@ -227,23 +239,23 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="member_type">Member Type</label>
+                                    <label for="member_type">{{ __('message.member type') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <select class="form-control" name="member_type">
-                                        <option disabled selected>Please select</option>
-                                        <option value="1">1</option>
-                                        <option value="0">0</option>
+                                        <option disabled selected>{{ __('message.please select') }}</option>
+                                        <option value="bersekutu" {{ $userProfile->member_type == 'bersekutu' ? 'selected' : ''}}>{{ __('message.alliance member') }}</option>
+                                        <option value="tetap" {{ $userProfile->member_type == 'tetap' ? 'selected' : ''}}>{{ __('message.permanent member') }}</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
                         <div class="text-center mt-5">
-                            <button type="submit" id="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-primary">{{ __('message.edit') }}</button>
                         </div>
                     </div>
                 </div>
@@ -252,7 +264,7 @@
             <div class="card overflow-auto">
                 <div class="card-body mt-4">
                     <div class="d-flex justify-content-between">
-                        <h1>Family Info</h1>
+                        <h1>{{ __('message.family information') }}</h1>
                     </div>
 
                     @foreach($userFamily as $index => $member)
@@ -279,23 +291,24 @@
                         @csrf
                         <div class="row m-1">
                             <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control" name="name" placeholder="Name">
+                                <input type="text" class="form-control" name="name" placeholder="{{ __('message.name') }}">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <select class="form-control" name="relation">
-                                    <option value="" disabled selected>Select Relationship</option>
-                                    <option value="spouse">Spouse</option>
-                                    <option value="parent">Parent</option>
-                                    <option value="child">Child</option>
-                                    <option value="sibling">Sibling</option>
+                                    <option value="" disabled selected>{{ __('message.please select relationship') }}</option>
+                                    <option value="parent">{{ __('message.parent') }}</option>
+                                    <option value="sibling">{{ __('message.sibling') }}</option>
+                                    <option value="spouse">{{ __('message.spouse') }}</option>
+                                    <option value="child">{{ __('message.child') }}</option>
+
                                 </select>
                             </div>
                         </div>
 
-                        <p class="text-danger fst-italic">** You need to add at least one family member and save before you can add another one.</p>
+                        <p class="text-danger fst-italic">** {{ __('message.you need to add at least one family member and save before you can add another one') }}.</p>
 
                         <div class="text-center mt-3">
-                            <button class="btn btn-primary">Update</button>
+                            <button class="btn btn-primary">{{ __('message.edit') }}</button>
                         </div>
                     </form>
                 </div>

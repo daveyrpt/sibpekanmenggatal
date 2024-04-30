@@ -14,15 +14,15 @@
 
                     <div class="card-body">
                         <div class="pt-4 pb-2">
-                            <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                            <p class="text-center small">Enter your personal details to create account</p>
+                            <h5 class="card-title text-center pb-0 fs-4 text-capitalize">{{ __('message.create an account') }}</h5>
+                            <p class="text-center small">{{ __('message.enter your personal details to create account') }}</p>
                         </div>
 
                         <form method="POST" action="{{ route('register') }}" class="row g-3 needs-validation" novalidate>
                             @csrf
 
                             <div class="col-12">
-                                <label for="yourName" class="form-label">Username</label>
+                                <label for="yourName" class="form-label">{{ __('message.username') }}</label>
                                 <div class="input-group has-validation">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="col-12">
-                                <label for="yourName" class="form-label">Email Address</label>
+                                <label for="yourName" class="form-label">{{ __('message.email') }}</label>
                                 <div class="input-group has-validation">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="col-12">
-                                <label for="password" class="form-label">Password</label>
+                                <label for="password" class="form-label">{{ __('message.password') }}</label>
                                 <div class="input-group has-validation">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="col-12">
-                                <label for="password-confirm" class="form-label">Confirm Password</label>
+                                <label for="password-confirm" class="form-label">{{ __('message.confirm password') }}</label>
                                 <div class="input-group has-validation">
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
@@ -91,11 +91,11 @@
                             </div> --}}
 
                             <div class="col-12">
-                                <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                                <button class="btn btn-primary w-100 text-capitalize" type="submit">{{ __('message.create an account') }}</button>
                             </div>
 
                             <div class="col-12">
-                                <p class="small mb-0">Already have an account? <a href="{{ route('login') }}">Log in</a></p>
+                                <p class="small mb-0">{{ __('message.already have an account?') }} <a href="{{ route('login') }}">{{ __('message.login') }}</a></p>
                             </div>
                         </form>
                     </div>

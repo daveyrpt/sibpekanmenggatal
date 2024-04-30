@@ -50,9 +50,9 @@ class ProfileController extends Controller
         $userProfile->user_id = $userAccount->id;
         $userProfile->save();
 
-        alert()->success('Success','New member added successfully!');
+        alert()->success( __('message.success'), __('message.new member added successfully'));
 
-        return redirect()->route('profile.view', ['userId' =>  $userAccount->id]);
+        return redirect()->route('profile.index', ['userId' =>  $userAccount->id]);
     }
 
     public function edit($userId)
@@ -76,7 +76,7 @@ class ProfileController extends Controller
             $input
         );
 
-        alert()->success('Success','Profile updated successfully!');
+        alert()->success( __('message.success'), __('message.profile updated successfully'));
 
         return redirect()->route('profile.index', ['userId' => $userId]);
     }
@@ -91,7 +91,7 @@ class ProfileController extends Controller
 
         $userProfile->delete();
 
-        alert()->success('Success','User deleted successfully!');
+        alert()->success( __('message.success'), __('message.user deleted successfully'));
 
         return redirect()->route('home.index');
     }
@@ -100,6 +100,16 @@ class ProfileController extends Controller
     {
         $rules = [
             'fullname' => ['required'],
+            'date_of_birth' => ['nullable', 'date'],
+            'address' => ['nullable'],
+            'city' => ['nullable'],
+            'state' => ['nullable'],
+            'zip' => ['nullable', 'numeric'],
+            'phone' => ['nullable'],
+            'occupation' => ['nullable'],
+            'gender' => ['nullable'],
+            'member_type' => ['nullable'],
+            
         ];
 
         return count($only) ? Arr::only($rules, $only) : $rules;

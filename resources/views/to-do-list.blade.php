@@ -6,4 +6,3 @@
 
 3. redirect on login depends on the user-
 
-4. cehck visitor??

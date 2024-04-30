@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-return view('landing-page/index');
-})->name('index');
+
+Route::middleware('log.ip.address')->get('/', [App\Http\Controllers\LandingPageController::class, 'index'])->name('index');
 
 Auth::routes();
 

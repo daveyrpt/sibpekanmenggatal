@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Dashboard</h1>
+        <h1>{{ __('message.dashboard') }}</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">{{ __('message.dashboard') }}</li>
             </ol>
         </nav>
     </div>
@@ -22,15 +22,15 @@
                             <div class="filter">
                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start"><h6>Filter</h6></li>
-                                    <li><a class="dropdown-item" href="#" id="filter-permanent-today">Today</a></li>
-                                    <li><a class="dropdown-item" href="#" id="filter-permanent-month">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#" id="filter-permanent-year">This Year</a></li>
+                                    <li class="dropdown-header text-start"><h6>{{ __('message.filter') }}</h6></li>
+                                    <li><a class="dropdown-item" href="#" id="filter-permanent-today">{{ __('message.today') }}</a></li>
+                                    <li><a class="dropdown-item" href="#" id="filter-permanent-month">{{ __('message.this month') }}</a></li>
+                                    <li><a class="dropdown-item" href="#" id="filter-permanent-year">{{ __('message.this year') }}</a></li>
                                 </ul>
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Ahli Tetap <span>| <span id="filter-permanent-type"></span></span>
+                                <h5 class="card-title">{{ __('message.permanent member') }} <span>| <span id="filter-permanent-type"></span></span>
                                 </h5>
 
                                 <div class="d-flex align-items-center">
@@ -41,7 +41,7 @@
                                         <h6 id="filter-permanent-value"></h6>
                                         <span id="filter-permanent-value-percentage"
                                             class="text-success small pt-1 fw-bold">%</span> <span
-                                            class="text-muted small pt-2 ps-1">increase</span>
+                                            class="text-muted small pt-2 ps-1">{{ __('message.increase') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -55,15 +55,15 @@
                             <div class="filter">
                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start"><h6>Filter</h6></li>
-                                    <li><a class="dropdown-item" href="#" id="filter-alliance-today">Today</a></li>
-                                    <li><a class="dropdown-item" href="#" id="filter-alliance-month">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#" id="filter-alliance-year">This Year</a></li>
+                                    <li class="dropdown-header text-start"><h6>{{ __('message.filter') }}</h6></li>
+                                    <li><a class="dropdown-item" href="#" id="filter-alliance-today">{{ __('message.today') }}</a></li>
+                                    <li><a class="dropdown-item" href="#" id="filter-alliance-month">{{ __('message.this month') }}</a></li>
+                                    <li><a class="dropdown-item" href="#" id="filter-alliance-year">{{ __('message.this year') }}</a></li>
                                 </ul>
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Ahli Bersekutu <span>| <span id="filter-alliance-type"></span></span>
+                                <h5 class="card-title">{{ __('message.alliance member') }} <span>| <span id="filter-alliance-type"></span></span>
                                 </h5>
 
                                 <div class="d-flex align-items-center">
@@ -74,7 +74,7 @@
                                         <h6 id="filter-alliance-value"></h6>
                                         <span id="filter-alliance-value-percentage"
                                             class="text-success small pt-1 fw-bold">%</span> <span
-                                            class="text-muted small pt-2 ps-1">increase</span>
+                                            class="text-muted small pt-2 ps-1">{{ __('message.increase') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -89,24 +89,24 @@
                             <div class="filter">
                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start"><h6>Filter</h6></li>
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    <li class="dropdown-header text-start"><h6>{{ __('message.filter') }}</h6></li>
+                                    <li><a class="dropdown-item" href="#" id="filter-visitor-today">{{ __('message.today') }}</a></li>
+                                    <li><a class="dropdown-item" href="#" id="filter-visitor-month">{{ __('message.this month') }}</a></li>
+                                    <li><a class="dropdown-item" href="#" id="filter-visitor-year">{{ __('message.this year') }}</a></li>
                                 </ul>
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Pelawat <span>| This Year</span></h5>
+                                <h5 class="card-title">{{ __('message.visitor') }} <span id="filter-visitor"></span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-people"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
-                                        <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                                            class="text-muted small pt-2 ps-1">decrease</span>
+                                        <h6 id="filter-visitor-value"></h6>
+                                        <span id="filter-visitor-value-percentage" class="text-danger small pt-1 fw-bold">%</span> <span
+                                            class="text-muted small pt-2 ps-1">{{ __('message.decrease') }}</span>
                                     </div>
                                 </div>
 
@@ -124,18 +124,18 @@
         <div class="card recent-sales overflow-auto">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="card-title mb-0">Membership Record</h5>
-                    <a href="{{ route('profile.create') }}" class="btn btn-success">Tambah Ahli</a>
+                    <h5 class="card-title mb-0">{{ __('message.membership record') }}</h5>
+                    <a href="{{ route('profile.create') }}" class="btn btn-success">{{ __('message.add member') }}</a>
                 </div>
                 <table id="membership-table" class="table table-borderless datatable">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Occupation</th>
-                            <th scope="col" class="text-center">Member Type</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">{{ __('message.name') }}</th>
+                            <th scope="col">{{ __('message.address') }}</th>
+                            <th scope="col">{{ __('message.occupation') }}</th>
+                            <th scope="col" class="text-center">{{ __('message.member type') }}</th>
+                            <th scope="col">{{ __('message.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -200,14 +200,14 @@
             var name = $(this).data("name");
             event.preventDefault();
             Swal.fire({
-                    title: 'Warning',
-                    text: 'Delete this user?',
-                    cancelButtonText: 'Cancel',
+                    title: '{{ __('message.warning') }}',
+                    text: '{{ __('message.delete this user') }}?',
+                    cancelButtonText: '{{ __('message.cancel') }}',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: '{{ __("message.yes, delete it") }}'
                 })
                 .then((result) => {
                     if (result.isConfirmed) {
@@ -222,17 +222,17 @@
         $(document).ready(function() {
             // for permament member 
             $("#filter-permanent-today").on("click", function() {
-                updateFilterPermanentValue('Today', {{ $totalUsersTodayForPermanentMember }},
+                updateFilterPermanentValue('{{ __('message.today') }}', {{ $totalUsersTodayForPermanentMember }},
                     {{ $percentagePermanentIncreaseDay }});
             });
 
             $("#filter-permanent-month").on("click", function() {
-                updateFilterPermanentValue('This Month', {{ $totalUsersThisMonthForPermanentMember }},
+                updateFilterPermanentValue('{{ __('message.this month') }}', {{ $totalUsersThisMonthForPermanentMember }},
                     {{ $percentagePermanentIncreaseMonth }});
             });
 
             $("#filter-permanent-year").on("click", function() {
-                updateFilterPermanentValue('This Year', {{ $totalUsersThisYearForPermanentMember }},
+                updateFilterPermanentValue('{{ __('message.this year') }}', {{ $totalUsersThisYearForPermanentMember }},
                     {{ $percentagePermanentIncreaseYear }});
             });
 
@@ -246,17 +246,17 @@
 
             // for alliance member
             $("#filter-alliance-today").on("click", function() {
-                updateFilterAllianceValue('Today', {{ $totalUsersTodayForAllianceMember }},
+                updateFilterAllianceValue('{{ __('message.today') }}', {{ $totalUsersTodayForAllianceMember }},
                     {{ $percentageAllianceIncreaseDay }});
             });
 
             $("#filter-alliance-month").on("click", function() {
-                updateFilterAllianceValue('This Month', {{ $totalUsersThisMonthForAllianceMember }},
+                updateFilterAllianceValue('{{ __('message.this month') }}', {{ $totalUsersThisMonthForAllianceMember }},
                     {{ $percentageAllianceIncreaseMonth }});
             });
 
             $("#filter-alliance-year").on("click", function() {
-                updateFilterAllianceValue('This Year', {{ $totalUsersThisYearForAllianceMember }},
+                updateFilterAllianceValue('{{ __('message.this year') }}', {{ $totalUsersThisYearForAllianceMember }},
                     {{ $percentageAllianceIncreaseYear }});
             });
 
@@ -266,6 +266,30 @@
                 $("#filter-alliance-value").text(value);
                 $("#filter-alliance-type").text(type);
                 $("#filter-alliance-value-percentage").text(percentange);
+            }
+
+            // for visitor
+            $("#filter-visitor-today").on("click", function() {
+                updateFilterVisitorValue('{{ __('message.today') }}', {{ $totalVisitorToday }},
+                    {{ $percentagePreviousTotalVisitorDay }});
+            });
+
+            $("#filter-visitor-month").on("click", function() {
+                updateFilterVisitorValue('{{ __('message.this month') }}', {{ $totalVisitorThisMonth }},
+                    {{ $percentagePreviousTotalVisitorMonth }});
+            });
+
+            $("#filter-visitor-year").on("click", function() {
+                updateFilterVisitorValue('{{ __('message.this year') }}', {{ $totalVisitorThisYear }},
+                    {{ $percentagePreviousTotalVisitorYear }});
+            });
+
+            $("#filter-visitor-today").click();
+
+            function updateFilterVisitorValue(type, value, percentange) {
+                $("#filter-visitor-value").text(value);
+                $("#filter-visitor").text(type);
+                $("#filter-visitor-value-percentage").text(percentange);
             }
 
         });
