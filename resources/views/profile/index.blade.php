@@ -199,19 +199,24 @@
                         <h1>{{ __('message.family information') }}</h1>
                     </div>
 
-                    @foreach($userFamily as $index => $member)
-                    <div class="row m-3">
-                        <div class="col-md-2 mb-1">
-                            <p>{{$index+1}}.</p>
+                    @php
+                        $userProfile->family = json_decode($userProfile->family);
+                    @endphp
+                    @if(isset($userProfile->family))
+                        @foreach($userProfile->family as $index => $member)
+                        <div class="row m-3">
+                            <div class="col-md-2 mb-1">
+                                <p>{{$index+1}}.</p>
+                            </div>
+                            <div class="col-md-6 mb-1 text-capitalize">
+                                <p>{{$member->name}}</p>
+                            </div>
+                            <div class="col-md-4 mb-1 text-capitalize">
+                                <p>{{ __('message.' . $member->relationship) }}</p>
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-1 text-capitalize">
-                            <p>{{$member['name']}}</p>
-                        </div>
-                        <div class="col-md-4 mb-1 text-capitalize">
-                            <p>{{$member['relation']}}</p>
-                        </div>
-                    </div>
-                    @endforeach
+                        @endforeach
+                    @endif
 
                 </div>
             </div>

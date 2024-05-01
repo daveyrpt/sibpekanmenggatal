@@ -240,14 +240,57 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="text-center mt-3">
-                            <button class="btn btn-primary">{{ __('message.add') }}</button>
-                        </div>
                     </div>
                 </div>
 
+                <div class="card overflow-auto">
+                    <div class="card-body mt-4">
+                        <div class="d-flex justify-content-between">
+                            <h1>{{ __('message.family information') }}</h1>
+                        </div>
+                        
+                        <table class="table" id="addFamilyRow">
+                            <tr>
+                                <th>Nama Keluarga</th>
+                                <th>Hubungan</th>
+                                <th><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Tambah Ahli</button></th>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <button type='submit' class="btn btn-primary">{{ __('message.add') }}</button>
+                </div>
             </form>
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    {{-- Dynamically add input row --}}
+    <script>
+        var i = 0;
+        $("#dynamic-ar").click(function () {
+            ++i;
+            var newRow = '<tr><td><input type="text" name="family[' + i +
+                '][name]" class="form-control" /></td>' +
+                '<td><select class="form-control" name="family[' + i + '][relationship]">' +
+                '<option value="" disabled selected>Sila Pilih Hubungan</option>' +
+                '<option value="parent">{{ __("message.parent") }}</option>' +
+                '<option value="sibling">{{ __("message.sibling") }}</option>' +
+                '<option value="spouse">{{ __("message.spouse") }}</option>' +
+                '<option value="child">{{ __("message.child") }}</option>' +
+                '</select></td>' +
+                '<td><button type="button" class="btn btn-outline-danger remove-input-field">Buang</button></td></tr>';
+
+            $("#addFamilyRow").append(newRow);
+        });
+
+    $(document).on('click', '.remove-input-field', function () {
+        $(this).parents('tr').remove();
+    });
+    </script>
+
+@endpush

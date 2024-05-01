@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use App\Models\User;
 use App\Models\UserProfile;
-use App\Models\Family;
 
 class ProfileController extends Controller
 {
@@ -26,9 +25,7 @@ class ProfileController extends Controller
             abort(404);
         }
 
-        $userFamily = Family::where('user_id', $userId)->get()->toArray();
-
-        return view('profile.index', compact('userAccount', 'userProfile', 'userFamily'));
+        return view('profile.index', compact('userAccount', 'userProfile'));
     }
 
     public function create()
@@ -42,6 +39,7 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
+        //dd($request->all());
         if(auth()->user()->role != 'admin') {
             abort(403, 'Unauthorized action.');
         }
@@ -64,6 +62,7 @@ class ProfileController extends Controller
 
         $userProfile = UserProfile::create($inputforProfile);
         $userProfile->user_id = $userAccount->id;
+        $userProfile->family = $request->input('family');
         $userProfile->save();
 
         alert()->success( __('message.success'), __('message.new member added successfully'));
@@ -73,7 +72,7 @@ class ProfileController extends Controller
 
     public function edit($userId)
     {
-        if(auth()->user()->role != 'admin') {
+        if(auth()->user()->role != 'admin' && auth()->user()->id != $userId) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -85,21 +84,20 @@ class ProfileController extends Controller
             abort(404);
         }
 
-        $userFamily = Family::where('user_id', $userId)->get()->toArray();
-
-        return view('profile.edit', compact('userAccount', 'userProfile', 'userFamily'));
+        return view('profile.edit', compact('userAccount', 'userProfile'));
     }
 
     public function update(Request $request, $userId) 
     {
-        if(auth()->user()->role != 'admin') {
+        if(auth()->user()->role != 'admin' && auth()->user()->id != $userId) {
             abort(403, 'Unauthorized action.');
         }
-
+        //dd($request->all());
         $input = $request->validate($this->validationRules());
 
         $userProfile = UserProfile::updateOrCreate(
             ['user_id' => $userId],
+            ['family' => $request->input('family')],
             $input
         );
 
@@ -130,7 +128,7 @@ class ProfileController extends Controller
     protected function validationRules(UserProfile $user = null, array $only = []): array
     {
         $rules = [
-            'fullname' => ['required'],
+            'fullname' => ['nullable'],
             'date_of_birth' => ['nullable', 'date'],
             'address' => ['nullable'],
             'city' => ['nullable'],
@@ -140,7 +138,6 @@ class ProfileController extends Controller
             'occupation' => ['nullable'],
             'gender' => ['nullable'],
             'member_type' => ['nullable'],
-            
         ];
 
         return count($only) ? Arr::only($rules, $only) : $rules;

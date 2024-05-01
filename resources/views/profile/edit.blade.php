@@ -253,93 +253,80 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="text-center mt-5">
-                            <button type="submit" class="btn btn-primary">{{ __('message.edit') }}</button>
-                        </div>
                     </div>
                 </div>
-            </form>
 
-            <div class="card overflow-auto">
-                <div class="card-body mt-4">
-                    <div class="d-flex justify-content-between">
-                        <h1>{{ __('message.family information') }}</h1>
-                    </div>
-
-                    @foreach($userFamily as $index => $member)
-                    <div class="row m-1 mt-3">
-                        <div class="col-md-6 mb-3 text-center text-capitalize">
-                            <p>{{$member['name']}}</p>
+                <div class="card overflow-auto">
+                    <div class="card-body mt-4">
+                        <div class="d-flex justify-content-between">
+                            <h1>{{ __('message.family information') }}</h1>
                         </div>
-                        <div class="col-md-5 mb-3 text-center text-capitalize">
-                            <p>{{$member['relation']}}</p>
-                        </div>
-                        <div class="col-md-1 mb-3">
-                            <form method="POST" action="{{ route('family.destroy', $member['id']) }}">
-                                @csrf
-                                <input name="_method" type="hidden" value="DELETE">
-                                <button class="btn btn-sm btn-danger btn-flat show_confirm"
-                                    data-toggle="tooltip" title='Delete'><i
-                                        class="bi bi-trash"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    @endforeach
+                        
+                        <table class="table" id="addFamilyRow">
+                            <tr>
+                                <th>Nama Keluarga</th>
+                                <th>Hubungan</th>
+                                <th><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Tambah Ahli</button></th>
+                            </tr>
 
-                    <form method="POST" action="{{ route('family.update', ['userId' => $userAccount->id]) }}">
-                        @csrf
-                        <div class="row m-1">
-                            <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control" name="name" placeholder="{{ __('message.name') }}">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <select class="form-control" name="relation">
-                                    <option value="" disabled selected>{{ __('message.please select relationship') }}</option>
-                                    <option value="parent">{{ __('message.parent') }}</option>
-                                    <option value="sibling">{{ __('message.sibling') }}</option>
-                                    <option value="spouse">{{ __('message.spouse') }}</option>
-                                    <option value="child">{{ __('message.child') }}</option>
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <p class="text-danger fst-italic">** {{ __('message.you need to add at least one family member and save before you can add another one') }}.</p>
+                        @php
+                            $userProfile->family = json_decode($userProfile->family);
+                            $index = count((array)$userProfile->family);
+                        @endphp
+                        @if(isset($userProfile->family))
+                            @foreach($userProfile->family as $index => $member)
+                                <tr>
+                                    <td>
+                                        <input type="text" name="family[{{$index}}][name]" class="form-control" value="{{ $member->name }}"/>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" name="family[{{$index}}][relationship]">
+                                            <option value="" disabled selected>{{ __('message.please select relationship') }}</option>
+                                            <option value="parent" {{ $member->relationship == 'parent' ? 'selected' : ''}}>{{ __('message.parent') }}</option>
+                                            <option value="sibling" {{ $member->relationship == 'sibling' ? 'selected' : ''}}>{{ __('message.sibling') }}</option>
+                                            <option value="spouse" {{ $member->relationship == 'spouse' ? 'selected' : ''}}>{{ __('message.spouse') }}</option>
+                                            <option value="child"  {{ $member->relationship == 'child' ? 'selected' : ''}}>{{ __('message.child') }}</option>
+                                        </select>
+                                    </td>
+                                    <td><button type="button" class="btn btn-outline-danger remove-input-field">Buang</button></td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        </table>
 
                         <div class="text-center mt-3">
-                            <button class="btn btn-primary">{{ __('message.edit') }}</button>
+                            <button type='submit' class="btn btn-primary">{{ __('message.edit') }}</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-           
+           </form>
         </div>
     </div>
 @endsection
 
 @push('scripts')
-    {{-- Delete Confirmation Modal --}}
-    <script type="text/javascript">
-        $('.show_confirm').click(function(event) {
-            var form = $(this).closest("form");
-            var name = $(this).data("name");
-            event.preventDefault();
-            Swal.fire({
-                    title: 'Warning',
-                    text: 'Delete family member?',
-                    cancelButtonText: 'Cancel',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                })
-                .then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit();
-                    }
-                });
+    {{-- Dynamically add input row --}}
+    <script>
+        var i = {{$index}};
+        $("#dynamic-ar").click(function () {
+            ++i;
+            var newRow = '<tr><td><input type="text" name="family[' + i +
+                '][name]" class="form-control" /></td>' +
+                '<td><select class="form-control" name="family[' + i + '][relationship]">' +
+                '<option value="" disabled selected>Sila Pilih Hubungan</option>' +
+                '<option value="parent">{{ __("message.parent") }}</option>' +
+                '<option value="sibling">{{ __("message.sibling") }}</option>' +
+                '<option value="spouse">{{ __("message.spouse") }}</option>' +
+                '<option value="child">{{ __("message.child") }}</option>' +
+                '</select></td>' +
+                '<td><button type="button" class="btn btn-outline-danger remove-input-field">Buang</button></td></tr>';
+
+            $("#addFamilyRow").append(newRow);
         });
+
+    $(document).on('click', '.remove-input-field', function () {
+        $(this).parents('tr').remove();
+    });
     </script>
+
 @endpush
