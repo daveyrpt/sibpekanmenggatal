@@ -14,7 +14,7 @@
             <div class="card recent-sales overflow-auto">
                 <div class="card-body">
                     <h5 class="card-title">{{ __('message.account setting') }}</h5>
-                    <form method="POST" action="{{ route('account-setting.update', Auth::user()->id) }}">
+                    <form method="POST" action="{{ route('account-setting.updateOwnProfile', Auth::user()->id) }}">
                         @csrf
                         <div class="row mb-3">
                             <label for="" class="col-sm-2 col-form-label">{{ __('message.username') }}</label>

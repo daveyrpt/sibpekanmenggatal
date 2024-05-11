@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\UserProfile;
 
@@ -39,17 +41,28 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request->all());
         if(auth()->user()->role != 'admin') {
             abort(403, 'Unauthorized action.');
         }
 
         $input = $request->validate([           
-            'username' => 'required',
-            'email' => ['required', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
-            'confirm_password' => ['required', 'string', 'min:8', 'same:password']
+            'username' => 'nullable',
+            'email' => ['nullable', 'unique:users'],
+            'password' => ['nullable', 'string', 'min:8'],
+            'confirm_password' => ['nullable', 'string', 'min:8', 'same:password']
         ]);
+
+        if(!$input['username']) {
+            $input['username'] = Str::random(6);
+        }
+
+        if(!$input['email']) {
+            $input['email'] = Str::random(6) . '@random.com';
+        }
+
+        if(!$input['password']) {
+            $input['password'] = Hash::make(Str::random(8));
+        }
 
         $inputforProfile = $request->validate($this->validationRules());
 
@@ -92,14 +105,15 @@ class ProfileController extends Controller
         if(auth()->user()->role != 'admin' && auth()->user()->id != $userId) {
             abort(403, 'Unauthorized action.');
         }
-        //dd($request->all());
+
         $input = $request->validate($this->validationRules());
 
         $userProfile = UserProfile::updateOrCreate(
             ['user_id' => $userId],
             ['family' => $request->input('family')],
-            $input
         );
+
+        $userProfile->update($input);
 
         alert()->success( __('message.success'), __('message.profile updated successfully'));
 
@@ -113,6 +127,12 @@ class ProfileController extends Controller
         }
 
         $userAccount = User::find($userId);
+
+        if($userAccount->superAdmin == 1) {
+            alert()->error( __('message.failed'), __('message.superadmin cannot be deleted'));
+            info('Cubaan penukaran peranan kepada akaun ini dibuat oleh ' . Auth::user()->name);
+            return redirect()->back();
+        }
 
         $userProfile = UserProfile::where('user_id', $userId)->first();
 
@@ -128,7 +148,7 @@ class ProfileController extends Controller
     protected function validationRules(UserProfile $user = null, array $only = []): array
     {
         $rules = [
-            'fullname' => ['nullable'],
+            'fullname' => ['required'],
             'date_of_birth' => ['nullable', 'date'],
             'address' => ['nullable'],
             'city' => ['nullable'],
@@ -138,6 +158,8 @@ class ProfileController extends Controller
             'occupation' => ['nullable'],
             'gender' => ['nullable'],
             'member_type' => ['nullable'],
+            'member_code' => ['nullable'],
+            'original_church' => ['nullable'],
         ];
 
         return count($only) ? Arr::only($rules, $only) : $rules;

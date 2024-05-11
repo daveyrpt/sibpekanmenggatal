@@ -30,11 +30,9 @@ Route::get('/profile/{userId}/edit', [App\Http\Controllers\ProfileController::cl
 
 Route::post('/profile/{userId}/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
+Route::post('/profile/{userId}/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
 Route::delete('/profile/{userId}/delete', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
-
-Route::post('/family/{userId}', [App\Http\Controllers\FamilyController::class, 'update'])->name('family.update');
-
-Route::delete('/family/{userId}', [App\Http\Controllers\FamilyController::class, 'destroy'])->name('family.destroy');
 
 Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
 
@@ -44,4 +42,6 @@ Route::post('/news/update-status', [App\Http\Controllers\NewsController::class, 
 
 Route::get('/account-setting', [App\Http\Controllers\AccountController::class, 'index'])->name('account-setting.index');
 
-Route::post('/account-setting/{userId}/update', [App\Http\Controllers\AccountController::class, 'update'])->name('account-setting.update');
+Route::post('/account-setting/{userId}/update-own-profile', [App\Http\Controllers\AccountController::class, 'updateOwnProfile'])->name('account-setting.updateOwnProfile');
+
+Route::post('/account-setting/{userId}/update-user-profile', [App\Http\Controllers\AccountController::class, 'updateUserProfile'])->name('account-setting.updateUserProfile');

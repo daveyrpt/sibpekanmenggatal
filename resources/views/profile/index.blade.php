@@ -20,7 +20,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberName">{{ __('message.username') }}</label>
+                                <label>{{ __('message.username') }}</label>
                             </div>
                         </div>
 
@@ -33,13 +33,26 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberName">{{ __('message.email') }}</label>
+                                <label>{{ __('message.email') }}</label>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <p>{{ $userAccount->email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{ __('message.role') }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <p>{{ $userAccount->role === 'admin' ? 'Admin' : __('message.normal user') }}</p>
                             </div>
                         </div>
                     </div>
@@ -53,7 +66,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberName">{{ __('message.fullname') }}</label>
+                                <label>{{ __('message.fullname') }}</label>
                             </div>
                         </div>
 
@@ -67,7 +80,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberEmail">{{ __('message.date of birth') }}</label>
+                                <label>{{ __('message.date of birth') }}</label>
                             </div>
                         </div>
 
@@ -81,7 +94,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberEmail">{{ __('message.address') }}</label>
+                                <label>{{ __('message.address') }}</label>
                             </div>
                         </div>
 
@@ -123,7 +136,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberEmail">{{ __('message.postcode') }}</label>
+                                <label>{{ __('message.postcode') }}</label>
                             </div>
                         </div>
 
@@ -137,7 +150,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberEmail">{{ __('message.contact number') }} (60+)</label>
+                                <label>{{ __('message.contact number') }} (60+)</label>
                             </div>
                         </div>
 
@@ -151,7 +164,7 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="memberEmail">{{ __('message.occupation') }}</label>
+                                <label>{{ __('message.occupation') }}</label>
                             </div>
                         </div>
 
@@ -186,6 +199,34 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <p>{{ $userProfile->member_type ?? '-' }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="memberType">{{ __('message.member code') }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <p>{{ $userProfile->member_code ?? '-' }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="memberType">{{ __('message.original church') }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <p>{{ $userProfile->original_church ?? '-' }}</p>
                             </div>
                         </div>
                     </div>

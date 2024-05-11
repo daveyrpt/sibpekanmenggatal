@@ -26,7 +26,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="username" required>
+                                    <input type="text" class="form-control" name="username">
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" name="email" required>
+                                    <input type="email" class="form-control" name="email">
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password" required>
+                                    <input type="password" class="form-control" name="password">
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="confirm_password" required>
+                                    <input type="password" class="form-control" name="confirm_password">
                                 </div>
                             </div>
                         </div>
@@ -240,6 +240,35 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="member_type">{{ __('message.member code') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="member_code">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="member_type">{{ __('message.original church') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="original_church">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 

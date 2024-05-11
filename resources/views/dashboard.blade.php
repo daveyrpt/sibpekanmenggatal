@@ -130,26 +130,23 @@
                 <table id="membership-table" class="table table-borderless datatable">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">{{ __('message.name') }}</th>
-                            <th scope="col">{{ __('message.address') }}</th>
-                            <th scope="col">{{ __('message.occupation') }}</th>
+                            <th scope="col" class="text-start">#</th>
+                            <th scope="col" class="text-start">{{ __('message.name') }}</th>
+                            <th scope="col" class="text-start">{{ __('message.address') }}</th>
+                            <th scope="col" class="text-start">{{ __('message.occupation') }}</th>
                             <th scope="col" class="text-center">{{ __('message.member type') }}</th>
-                            <th scope="col">{{ __('message.action') }}</th>
+                            <th scope="col" class="text-start">{{ __('message.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($userProfile as $index => $member)
                             <tr>
-                                <th scope="row" class="text-center">{{ $index + 1 }}</th>
-                                <td><a href="{{ route('profile.index', $member->user_id) }}"
-                                        class="text-primary">{{ $member->fullname ?? '-' }}</a></td>
-                                <td>{{ $member->state ?? '-' }}</td>
-                                <td>{{ $member->occupation ?? '-' }}</td>
-                                <td class="text-center text-capitalize text-white"><span
-                                        class="badge {{ $member->member_type == 'tetap' ? 'bg-primary ' : 'bg-success' }}">{{ $member->member_type ?? '-' }}</span>
-                                </td>
-                                <td>
+                                <td scope="row" class="text-start">{{ $index + 1 }}</td>
+                                <td class="text-start"><a href="{{ route('profile.index', $member->user_id) }}" class="text-primary">{{ $member->fullname ?? '-' }}</a></td>
+                                <td class="text-start">{{ $member->state ?? '-' }}</td>
+                                <td class="text-start">{{ $member->occupation ?? '-' }}</td>
+                                <td class="text-center text-capitalize text-white"><span class="badge {{ $member->member_type == 'tetap' ? 'bg-primary ' : ($member->member_type == 'bersekutu' ? 'bg-success' : 'text-black -')}}">{{ $member->member_type ?? '-' }}</span></td>
+                                <td class="text-start">
                                     <div class="d-flex">
                                         <a href='{{ route('profile.edit', ['userId' => $member->user_id]) }}'
                                             type="button" class="btn btn-secondary btn-sm me-1"><i

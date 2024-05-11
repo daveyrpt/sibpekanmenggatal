@@ -9,6 +9,7 @@ return [
     'password' => 'Kata laluan',
     'confirm password' => 'Sahkan kata laluan',
     'name' => 'Nama',
+    'role' => 'Peranan',
     'fullname' => 'Nama Penuh',
     'dashboard' => 'Laman Utama',
     'profile' => 'Profil',
@@ -32,6 +33,10 @@ return [
     'user' => 'Pengguna',
     'status' => 'Status',
     'please select' => '',
+    'member code' => 'Kod Keahlian',
+    'original church' => 'Gereja Asal',
+    'normal user' => 'Pengguna Biasa',
+    'admin' => 'Pengurus',
 
     // message
     'please enter your email' => 'Sila masukkan emel anda',
@@ -53,6 +58,8 @@ return [
     'news successfully added' => 'Berita berjaya ditambah',
     'news status changed' => 'Status berita berjaya ditukar',
     'password and confirm password does not match' => 'Kata laluan dan kata laluan semasa tidak sepadan',
+    'superadmin cannot be changed' => 'Peranan akaun ini tidak boleh dikemaskini. Aksi ini akan direkod untuk keselamatan',
+    'superadmin cannot be deleted' => 'Akaun ini tidak boleh dipadam. Aksi ini akan direkod untuk keselamatan',
 
     // login
     'login to your account' => 'Log Masuk ke Akaun Anda',

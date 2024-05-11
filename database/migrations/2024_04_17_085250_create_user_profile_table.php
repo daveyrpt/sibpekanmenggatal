@@ -26,8 +26,16 @@ return new class extends Migration
             $table->string('member_type')->nullable();
             $table->string('profile_picture')->nullable();
             $table->string('family')->nullable();
+            $table->string('member_code')->nullable();
+            $table->string('original_church')->nullable();
             $table->timestamps();
         });
+
+        $admin = DB::table('users')->where('role', 'admin')->first();
+
+        DB::table('user_profiles')->insert([
+            'user_id' => $admin->id,
+        ]);
     }
 
     /**

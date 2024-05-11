@@ -33,7 +33,9 @@ class DashboardController extends Controller
 
         $listOfAdmin = User::where('role', 'admin')->pluck('id');
 
-        $userProfile = UserProfile::whereNotIn('user_id', $listOfAdmin)->get();
+        //$userProfile = UserProfile::whereNotIn('user_id', $listOfAdmin)->get();
+
+        $userProfile = UserProfile::get();
 
         // total permanant users
         $totalUsersThisYearForPermanentMember = UserProfile::where('member_type', 'tetap')->whereYear('created_at', Carbon::now()->year)->count();

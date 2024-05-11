@@ -28,7 +28,7 @@
 
                         <h6 class="text-capitalize">{{ $user->name }}</h6>
 
-                        <span class="text-capitalize badge {{ $user->role === 'admin' ? 'bg-warning' : ($user->profile && $user->profile->member_type === 'tetap' ? 'bg-primary' : 'bg-success') }}">
+                        <span class="text-capitalize badge {{ $user->role === 'admin' ? 'bg-warning' : ($user->profile && $user->profile->member_type === 'tetap' ? 'bg-primary' : ($user->profile && $user->profile->member_type === 'bersekutu' ? 'bg-success' : '')) }}">
                             {{ $user->role === 'admin' ? 'Administrator' : ($user->profile ? $user->profile->member_type : 'Unknown') }}
                         </span>
                     </li>
