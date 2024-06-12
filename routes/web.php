@@ -53,7 +53,7 @@ Route::post('/account-setting/{userId}/update-user-profile', [App\Http\Controlle
 Route::get('/run-migration', function(){
 
     Artisan::call('optimize:clear');
-    Artisan::call('migrate');
+    Artisan::call('migrate:fresh --seed');
 
     return "Success migrate";
 });
