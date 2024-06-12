@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Log;
 
 class AccountController extends Controller
 {
@@ -37,6 +38,12 @@ class AccountController extends Controller
         $userAccount->email = $input['email'];
         $userAccount->password = Hash::make($input['password']);
         $userAccount->save();
+
+        Log::create([
+            'causer_id' => Auth::user()->id,
+            'description' => LOG::UPDATE_ACCOUNT,
+            'target_id' => $userAccount->id
+        ]);
 
         alert()->success( __('message.success'), __('message.information successfully updated'));
 
@@ -71,6 +78,12 @@ class AccountController extends Controller
         }
     
         $userAccount->save();
+
+        Log::create([
+            'causer_id' => Auth::user()->id,
+            'description' => LOG::UPDATE_ACCOUNT,
+            'target_id' => $userAccount->id
+        ]);
 
         alert()->success( __('message.success'), __('message.information successfully updated'));
 

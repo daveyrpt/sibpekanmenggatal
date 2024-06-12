@@ -39,9 +39,9 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6 id="filter-permanent-value"></h6>
-                                        <span id="filter-permanent-value-percentage"
+{{--                                         <span id="filter-permanent-value-percentage"
                                             class="text-success small pt-1 fw-bold">%</span> <span
-                                            class="text-muted small pt-2 ps-1">{{ __('message.increase') }}</span>
+                                            class="text-muted small pt-2 ps-1">{{ __('message.increase') }}</span> --}}
                                     </div>
                                 </div>
                             </div>
@@ -72,9 +72,9 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6 id="filter-alliance-value"></h6>
-                                        <span id="filter-alliance-value-percentage"
+{{--                                         <span id="filter-alliance-value-percentage"
                                             class="text-success small pt-1 fw-bold">%</span> <span
-                                            class="text-muted small pt-2 ps-1">{{ __('message.increase') }}</span>
+                                            class="text-muted small pt-2 ps-1">{{ __('message.increase') }}</span> --}}
                                     </div>
                                 </div>
                             </div>
@@ -105,8 +105,8 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6 id="filter-visitor-value"></h6>
-                                        <span id="filter-visitor-value-percentage" class="text-danger small pt-1 fw-bold">%</span> <span
-                                            class="text-muted small pt-2 ps-1">{{ __('message.decrease') }}</span>
+{{--                                         <span id="filter-visitor-value-percentage" class="text-danger small pt-1 fw-bold">%</span> <span
+                                            class="text-muted small pt-2 ps-1">{{ __('message.decrease') }}</span> --}}
                                     </div>
                                 </div>
 
@@ -219,74 +219,62 @@
         $(document).ready(function() {
             // for permament member 
             $("#filter-permanent-today").on("click", function() {
-                updateFilterPermanentValue('{{ __('message.today') }}', {{ $totalUsersTodayForPermanentMember }},
-                    {{ $percentagePermanentIncreaseDay }});
+                updateFilterPermanentValue('{{ __('message.today') }}', {{ $totalUsersTodayForPermanentMember }});
             });
 
             $("#filter-permanent-month").on("click", function() {
-                updateFilterPermanentValue('{{ __('message.this month') }}', {{ $totalUsersThisMonthForPermanentMember }},
-                    {{ $percentagePermanentIncreaseMonth }});
+                updateFilterPermanentValue('{{ __('message.this month') }}', {{ $totalUsersThisMonthForPermanentMember }});
             });
 
             $("#filter-permanent-year").on("click", function() {
-                updateFilterPermanentValue('{{ __('message.this year') }}', {{ $totalUsersThisYearForPermanentMember }},
-                    {{ $percentagePermanentIncreaseYear }});
+                updateFilterPermanentValue('{{ __('message.this year') }}', {{ $totalUsersThisYearForPermanentMember }});
             });
 
             $("#filter-permanent-today").click();
 
-            function updateFilterPermanentValue(type, value, percentange) {
+            function updateFilterPermanentValue(type, value) {
                 $("#filter-permanent-value").text(value);
                 $("#filter-permanent-type").text(type);
-                $("#filter-permanent-value-percentage").text(percentange);
             }
 
             // for alliance member
             $("#filter-alliance-today").on("click", function() {
-                updateFilterAllianceValue('{{ __('message.today') }}', {{ $totalUsersTodayForAllianceMember }},
-                    {{ $percentageAllianceIncreaseDay }});
+                updateFilterAllianceValue('{{ __('message.today') }}', {{ $totalUsersTodayForAllianceMember }});
             });
 
             $("#filter-alliance-month").on("click", function() {
-                updateFilterAllianceValue('{{ __('message.this month') }}', {{ $totalUsersThisMonthForAllianceMember }},
-                    {{ $percentageAllianceIncreaseMonth }});
+                updateFilterAllianceValue('{{ __('message.this month') }}', {{ $totalUsersThisMonthForAllianceMember }});
             });
 
             $("#filter-alliance-year").on("click", function() {
-                updateFilterAllianceValue('{{ __('message.this year') }}', {{ $totalUsersThisYearForAllianceMember }},
-                    {{ $percentageAllianceIncreaseYear }});
+                updateFilterAllianceValue('{{ __('message.this year') }}', {{ $totalUsersThisYearForAllianceMember }});
             });
 
             $("#filter-alliance-today").click();
 
-            function updateFilterAllianceValue(type, value, percentange) {
+            function updateFilterAllianceValue(type, value) {
                 $("#filter-alliance-value").text(value);
                 $("#filter-alliance-type").text(type);
-                $("#filter-alliance-value-percentage").text(percentange);
             }
 
             // for visitor
             $("#filter-visitor-today").on("click", function() {
-                updateFilterVisitorValue('{{ __('message.today') }}', {{ $totalVisitorToday }},
-                    {{ $percentagePreviousTotalVisitorDay }});
+                updateFilterVisitorValue('{{ __('message.today') }}', {{ $totalVisitorToday }});
             });
 
             $("#filter-visitor-month").on("click", function() {
-                updateFilterVisitorValue('{{ __('message.this month') }}', {{ $totalVisitorThisMonth }},
-                    {{ $percentagePreviousTotalVisitorMonth }});
+                updateFilterVisitorValue('{{ __('message.this month') }}', {{ $totalVisitorThisMonth }});
             });
 
             $("#filter-visitor-year").on("click", function() {
-                updateFilterVisitorValue('{{ __('message.this year') }}', {{ $totalVisitorThisYear }},
-                    {{ $percentagePreviousTotalVisitorYear }});
+                updateFilterVisitorValue('{{ __('message.this year') }}', {{ $totalVisitorThisYear }});
             });
 
             $("#filter-visitor-today").click();
 
-            function updateFilterVisitorValue(type, value, percentange) {
+            function updateFilterVisitorValue(type, value) {
                 $("#filter-visitor-value").text(value);
                 $("#filter-visitor").text(type);
-                $("#filter-visitor-value-percentage").text(percentange);
             }
 
         });

@@ -94,6 +94,20 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label>{{ __('message.age') }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <p>{{ $userProfile->age ?? '-' }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label>{{ __('message.address') }}</label>
                             </div>
                         </div>
@@ -231,29 +245,55 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="memberType">{{ __('message.profile img') }}</label>
+                            </div>
+                        </div>
 
-            <div class="card overflow-auto">
-                <div class="card-body mt-4">
-                    <div class="container m-3">
+                        <div class="col-md-6">  
+                            @if(isset($userProfile->profile_img))
+                                <div class="d-flex justify-content-between">
+                                    <a href="{{ asset('images/profile/' . $userProfile->profile_img) }}">{{ $userProfile->original_profile_img}}</a>
+                                    <form method="POST" action="{{route('profile.destroyImage', $userProfile->id) }}">
+                                        @csrf
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button type="submit" class="btn btn-sm btn-danger btn-flat delete-profile-img"
+                                            data-toggle="tooltip" title='Delete'><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </div>
+                            @else
+                                -
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="container m-3 mt-5">
                         <h1>{{ __('message.family information') }}</h1>
                     </div>
 
-                    @php
-                        $userProfile->family = json_decode($userProfile->family);
-                    @endphp
-                    @if(isset($userProfile->family))
-                        @foreach($userProfile->family as $index => $member)
+                    @if(isset($userFamily))
+                        @foreach($userFamily as $index => $familyMember)
                         <div class="row m-3">
                             <div class="col-md-2 mb-1">
                                 <p>{{$index+1}}.</p>
                             </div>
-                            <div class="col-md-6 mb-1 text-capitalize">
-                                <p>{{$member->name}}</p>
+                            <div class="col-md-4 mb-1 text-capitalize">
+                                <a href="{{ route('profile.index', $familyMember->user_id) }}">{{$familyMember->fullname}}</a>
                             </div>
                             <div class="col-md-4 mb-1 text-capitalize">
-                                <p>{{ __('message.' . $member->relationship) }}</p>
+                                <p>{{ __('message.' . $familyMember->relationship) }}</p>
+                            </div>
+                            <div class="col-md-2 mb-1">
+                                <form method="POST" action="{{ route('profile.destroy', $familyMember->user_id) }}">
+                                    @csrf
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button type="submit" class="btn btn-sm btn-danger btn-flat delete-family-member"
+                                        data-toggle="tooltip" title='Delete'><i
+                                            class="bi bi-trash"></i></button>
+                                </form>
                             </div>
                         </div>
                         @endforeach
@@ -264,3 +304,50 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    {{-- Delete Confirmation Modal --}}
+    <script type="text/javascript">
+        $('.delete-profile-img').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            Swal.fire({
+                    title: '{{ __('message.warning') }}',
+                    text: '{{ __('message.delete this profile image') }}?',
+                    cancelButtonText: '{{ __('message.cancel') }}',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '{{ __("message.yes, delete it") }}'
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+        });
+
+        $('.delete-family-member').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            Swal.fire({
+                    title: '{{ __('message.warning') }}',
+                    text: '{{ __('message.delete this family user') }}?',
+                    cancelButtonText: '{{ __('message.cancel') }}',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '{{ __("message.yes, delete it") }}'
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+        });
+    </script>
+@endpush

@@ -99,22 +99,23 @@
                 @endif
             </form>
 
-            <form method="POST" action="{{ route('profile.update', ['userId' => $userAccount->id]) }}">
-                 @csrf
+            <form method="POST" action="{{ route('profile.update', ['userId' => $userAccount->id]) }}" enctype="multipart/form-data">
+                @csrf
 
                 <div class="card overflow-auto">
                     <div class="card-body mt-4">
                         <h1>{{ __('message.personal information') }}</h1>
+
                         <div class="row m-3">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group required">
                                     <label for="fullname">{{ __('message.fullname') }}</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="fullname" value="{{ $userProfile->fullname ?? ''}}">
+                                    <input type="text" class="form-control" name="fullname" value="{{ $userProfile->fullname ?? ''}}" required>
                                 </div>
                             </div>
                         </div>
@@ -126,9 +127,21 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
-                                    <input type="date" class="form-control" name="date_of_birth" value="{{ $userProfile->date_of_birth ?? ''}}">
+                                    <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ $userProfile->date_of_birth ?? ''}}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label for="age">{{ __('message.age') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="age" name="age" value="{{ $userProfile->age ?? ''}}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -274,7 +287,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="member_type">{{ __('message.member code') }}</label>
+                                    <label for="member_code">{{ __('message.member code') }}</label>
                                 </div>
                             </div>
 
@@ -288,7 +301,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="member_type">{{ __('message.original church') }}</label>
+                                    <label for="original_church">{{ __('message.original church') }}</label>
                                 </div>
                             </div>
 
@@ -299,12 +312,53 @@
                             </div>
                         </div>
 
-                    </div>
-                </div>
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="baptize_date">{{ __('message.baptize date') }}</label>
+                                </div>
+                            </div>
 
-                <div class="card overflow-auto">
-                    <div class="card-body mt-4">
-                        <div class="d-flex justify-content-between">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="date" class="form-control" name="baptize_date" value="{{ $userProfile->baptize_date ?? ''}}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="begin_year">{{ __('message.begin year') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="number" min="1900" max="2099" step="1" class="form-control" name="begin_year" value="{{ $userProfile->begin_year ?? ''}}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="profile_img">{{ __('message.profile img') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">  
+                                @if(isset($userProfile->profile_img))
+                                    <a href="{{ asset('images/profile/' . $userProfile->profile_img) }}">{{ $userProfile->original_profile_img}}</a>
+                                @else
+                                    <div class="form-group">
+                                        <input type="file" class="form-control" name="profile_img">
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-5">
                             <h1>{{ __('message.family information') }}</h1>
                         </div>
                         
@@ -315,29 +369,30 @@
                                 <th><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Tambah Ahli</button></th>
                             </tr>
 
-                        @php
-                            $userProfile->family = json_decode($userProfile->family);
-                            $index = count((array)$userProfile->family);
-                        @endphp
-                        @if(isset($userProfile->family))
-                            @foreach($userProfile->family as $index => $member)
-                                <tr>
-                                    <td>
-                                        <input type="text" name="family[{{$index}}][name]" class="form-control" value="{{ $member->name }}"/>
-                                    </td>
-                                    <td>
-                                        <select class="form-control" name="family[{{$index}}][relationship]">
-                                            <option value="" disabled selected>{{ __('message.please select relationship') }}</option>
-                                            <option value="parent" {{ $member->relationship == 'parent' ? 'selected' : ''}}>{{ __('message.parent') }}</option>
-                                            <option value="sibling" {{ $member->relationship == 'sibling' ? 'selected' : ''}}>{{ __('message.sibling') }}</option>
-                                            <option value="spouse" {{ $member->relationship == 'spouse' ? 'selected' : ''}}>{{ __('message.spouse') }}</option>
-                                            <option value="child"  {{ $member->relationship == 'child' ? 'selected' : ''}}>{{ __('message.child') }}</option>
-                                        </select>
-                                    </td>
-                                    <td><button type="button" class="btn btn-outline-danger remove-input-field">Buang</button></td>
-                                </tr>
-                            @endforeach
-                        @endif
+                            @php
+                                $index = count((array)$userFamily);
+                            @endphp
+
+                            @if(isset($userFamily))
+                                @foreach($userFamily as $index => $familyMember)
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="family[{{$index}}][id]" class="form-control" value="{{ $familyMember->id }}"/>
+                                            <input type="text" name="family[{{$index}}][name]" class="form-control" value="{{ $familyMember->fullname }}" required/>
+                                        </td>
+                                        <td>
+                                            <select class="form-control" name="family[{{$index}}][relationship]" required>
+                                                <option value="" disabled selected>{{ __('message.please select relationship') }}</option>
+                                                <option value="parent" {{ $familyMember->relationship == 'parent' ? 'selected' : ''}}>{{ __('message.parent') }}</option>
+                                                <option value="sibling" {{ $familyMember->relationship == 'sibling' ? 'selected' : ''}}>{{ __('message.sibling') }}</option>
+                                                <option value="spouse" {{ $familyMember->relationship == 'spouse' ? 'selected' : ''}}>{{ __('message.spouse') }}</option>
+                                                <option value="child"  {{ $familyMember->relationship == 'child' ? 'selected' : ''}}>{{ __('message.child') }}</option>
+                                            </select>
+                                        </td>
+                                        {{-- <td><button type="button" class="btn btn-outline-danger remove-input-field" disabled>Buang</button></td> --}}
+                                    </tr>
+                                @endforeach
+                            @endif
                         </table>
 
                         <div class="text-center mt-3">
@@ -356,9 +411,10 @@
         var i = {{$index}};
         $("#dynamic-ar").click(function () {
             ++i;
-            var newRow = '<tr><td><input type="text" name="family[' + i +
-                '][name]" class="form-control" /></td>' +
-                '<td><select class="form-control" name="family[' + i + '][relationship]">' +
+            var newRow = '<tr><input type="hidden" name="family[' + i +
+                '][id]" /><td><input type="text" name="family[' + i +
+                '][name]" class="form-control" required/></td>' +
+                '<td><select class="form-control" name="family[' + i + '][relationship]" required>' +
                 '<option value="" disabled selected>Sila Pilih Hubungan</option>' +
                 '<option value="parent">{{ __("message.parent") }}</option>' +
                 '<option value="sibling">{{ __("message.sibling") }}</option>' +
@@ -375,4 +431,43 @@
     });
     </script>
 
+    {{-- Delete Confirmation Modal --}}
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            Swal.fire({
+                    title: '{{ __('message.warning') }}',
+                    text: '{{ __('message.delete this family user') }}?',
+                    cancelButtonText: '{{ __('message.cancel') }}',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '{{ __("message.yes, delete it") }}'
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+        });
+    </script>
+
+    {{-- Change age based on birth date --}}
+    <script>
+        $(document).ready(function () {
+            $('#date_of_birth').on('change', function () {
+                var birthDate = new Date($(this).val());
+                var today = new Date();
+                var age = today.getFullYear() - birthDate.getFullYear();
+                var m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                $('#age').val(age);
+            });
+        });
+    </script>
 @endpush

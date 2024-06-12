@@ -17,7 +17,7 @@
  *  10. home
  *  11. about
  *  12. pricing 
- *  13. testimonials
+ *  13. family
  *  14. download
  *  15. footer styles
  *
@@ -2263,25 +2263,25 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 
 
 /* ===================================================================
- *  13. testimonials - (_layout.scss)
+ *  13. family - (_layout.scss)
  *
  * ------------------------------------------------------------------- */
 
-#testimonials {
+#family {
   background: #FFFFFF;
   padding: 15rem 0 9rem;
   text-align: center;
   min-height: 600px;
 }
 
-#testimonials h1::before {
+#family h1::before {
   left: 50%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
-#testimonials .owl-wrap {
+#family .owl-wrap {
   width: 80%;
   max-width: 900px;
   margin: 4.2rem auto 0;
@@ -2429,7 +2429,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 
 /* ------------------------------------------------------------------- 
  * responsive:
- * testimonials
+ * family
  * ------------------------------------------------------------------- */
 
 @media only screen and (max-width: 1024px) {
@@ -2455,7 +2455,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 }
 
 @media only screen and (max-width: 600px) {
-  #testimonials .owl-wrap {
+  #family .owl-wrap {
     width: 90%;
   }
   #testimonial-slider p {
@@ -2464,7 +2464,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 }
 
 @media only screen and (max-width: 400px) {
-  #testimonials .owl-wrap {
+  #family .owl-wrap {
     width: 100%;
   }
   #testimonial-slider p {

@@ -12,10 +12,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        News::create([
+        News::insert([
             'title' => 'default',
             'name' => 'default',
             'file_path' => 'default',
+            'type' => 'public',
+            'status' => false,
+        ]);
+
+        News::insert([
+            'title' => 'default',
+            'name' => 'default',
+            'file_path' => 'default',
+            'type' => 'member-only',
             'status' => false,
         ]);
     }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\News;
+use App\Models\Log;
 
 class NewsController extends Controller
 {
@@ -13,7 +15,7 @@ class NewsController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        $news = News::first();
+        $news = News::all();
         return view('news.index', compact('news'));
     }
 
@@ -26,10 +28,11 @@ class NewsController extends Controller
         $request->validate([
             'title' => 'required',
             'file' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'type' => 'required',
         ]);
 
         if ($request->hasFile('file')) {
-            $oldFileModel = News::latest()->first();
+            $oldFileModel = News::where('type', $request->input('type'))->latest()->first();
             if ($oldFileModel) {
                 $oldFilePath = public_path($oldFileModel->file_path);
                 if (file_exists($oldFilePath)) {
@@ -38,17 +41,23 @@ class NewsController extends Controller
                 }
             }
 
- 
             $file = $request->file('file');
             //$fileName = time() . '_' . $file->getClientOriginalName();
-            $fileName = 'news-image.png';
-            $filePath = $file->move(public_path('images'), $fileName);
+            $fileName = $request->input('type') === 'public' ? 'public-news.png' : 'members-news.png';
+            $filePath = $file->move(public_path('images/news'), $fileName);
 
             $fileModel = new News;
             $fileModel->title = $request->input('title');
             $fileModel->name = $fileName;
-            $fileModel->file_path = '/images/' . $fileName;
+            $fileModel->type = $request->input('type');
+            $fileModel->file_path = '/images/news/' . $fileName;
             $fileModel->save();
+
+            Log::create([
+                'causer_id' => Auth::user()->id,
+                'description' => $request->input('type') === 'public' ? LOG::UPDATE_PUBLIC_NEWS : LOG::UPDATE_MEMBER_ONLY_NEWS,
+                'target_id' => null
+            ]);
 
             alert()->success( __('message.success'), __('message.news successfully added'));
 
@@ -62,8 +71,16 @@ class NewsController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        News::find($request->id)->update([
+        $news = News::find($request->id);
+
+        $news->update([
             'status' => $request->input('status') ? 1 : 0
+        ]);
+
+        Log::create([
+            'causer_id' => Auth::user()->id,
+            'description' => $news->type === 'public' ? LOG::UPDATE_PUBLIC_STATUS_NEWS : LOG::UPDATE_MEMBER_ONLY_STATUS_NEWS,
+            'target_id' => null
         ]);
 
         alert()->success( __('message.success'), __('message.news status changed'));

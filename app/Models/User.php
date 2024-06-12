@@ -44,6 +44,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function getIsSuperAdminAttribute()
+    {
+        return $this->superAdmin === '1';
+    }
+
     public function profile()
     {
         return $this->hasOne(UserProfile::class);

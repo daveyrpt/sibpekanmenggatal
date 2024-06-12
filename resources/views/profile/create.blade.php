@@ -12,7 +12,7 @@
         </nav>
 
         <div class="col-12">
-            <form method="POST" action="{{ route('profile.store') }}">
+            <form method="POST" action="{{ route('profile.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="card overflow-auto">
                     <div class="card-body mt-4">
@@ -96,9 +96,21 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
-                                    <input type="date" class="form-control" name="date_of_birth">
+                                    <input type="date" class="form-control" id="date_of_birth" name="date_of_birth">
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label for="age">{{ __('message.age') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="age" name="age" readonly>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +138,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                        <input type="text" class="form-control" name="city">
+                                    <input type="text" class="form-control" name="city">
                                 </div>
                             </div>
                         </div>
@@ -244,7 +256,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="member_type">{{ __('message.member code') }}</label>
+                                    <label for="member_code">{{ __('message.member code') }}</label>
                                 </div>
                             </div>
 
@@ -258,7 +270,7 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="member_type">{{ __('message.original church') }}</label>
+                                    <label for="original_church">{{ __('message.original church') }}</label>
                                 </div>
                             </div>
 
@@ -269,12 +281,49 @@
                             </div>
                         </div>
 
-                    </div>
-                </div>
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="baptize_date">{{ __('message.baptize date') }}</label>
+                                </div>
+                            </div>
 
-                <div class="card overflow-auto">
-                    <div class="card-body mt-4">
-                        <div class="d-flex justify-content-between">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="date" class="form-control" name="baptize_date">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="begin_year">{{ __('message.begin year') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="number" min="1900" max="2099" step="1" class="form-control" name="begin_year">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="member_type">{{ __('message.profile img') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="file" class="form-control" name="profile_img">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-5">
                             <h1>{{ __('message.family information') }}</h1>
                         </div>
                         
@@ -284,7 +333,6 @@
                                 <th>Hubungan</th>
                                 <th><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Tambah Ahli</button></th>
                             </tr>
-
                         </table>
                     </div>
                 </div>
@@ -303,9 +351,10 @@
         var i = 0;
         $("#dynamic-ar").click(function () {
             ++i;
-            var newRow = '<tr><td><input type="text" name="family[' + i +
-                '][name]" class="form-control" /></td>' +
-                '<td><select class="form-control" name="family[' + i + '][relationship]">' +
+            var newRow = '<tr><input type="hidden" name="family[' + i +
+                '][id]"/><td><input type="text" name="family[' + i +
+                '][name]" class="form-control" required/></td>' +
+                '<td><select class="form-control" name="family[' + i + '][relationship]" required>' +
                 '<option value="" disabled selected>Sila Pilih Hubungan</option>' +
                 '<option value="parent">{{ __("message.parent") }}</option>' +
                 '<option value="sibling">{{ __("message.sibling") }}</option>' +
@@ -322,4 +371,19 @@
     });
     </script>
 
+    {{-- Change age based on birth date --}}
+    <script>
+        $(document).ready(function () {
+            $('#date_of_birth').on('change', function () {
+                var birthDate = new Date($(this).val());
+                var today = new Date();
+                var age = today.getFullYear() - birthDate.getFullYear();
+                var m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                $('#age').val(age);
+            });
+        });
+    </script>
 @endpush

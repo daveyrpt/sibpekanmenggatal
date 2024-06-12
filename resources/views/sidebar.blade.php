@@ -2,14 +2,12 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-        @if (Auth::user()->role === 'admin')
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('home*') ? '' : 'collapsed' }}" href="{{ route('home.index') }}">
-                    <i class="bi bi-grid"></i>
-                    <span>{{ __('message.dashboard') }}</span>
-                </a>
-            </li>
-        @endif
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('home*') ? '' : 'collapsed' }}" href="{{ route('home.index') }}">
+                <i class="bi bi-grid"></i>
+                <span>{{ __('message.dashboard') }}</span>
+            </a>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link {{ Request::is('profile*') ? '' : 'collapsed' }}"
@@ -24,6 +22,15 @@
                 <a class="nav-link {{ Request::is('news*') ? '' : 'collapsed' }}" href="{{ route('news.index') }}">
                     <i class="bi bi-newspaper"></i>
                     <span>{{ __('message.news') }}</span>
+                </a>
+            </li>
+        @endif
+
+        @if (Auth::user()->isSuperAdmin)
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('logs*') ? '' : 'collapsed' }}" href="{{ route('logs.index') }}">
+                    <i class="bi bi-shield-exclamation"></i>
+                    <span>{{ __('message.log') }}</span>
                 </a>
             </li>
         @endif

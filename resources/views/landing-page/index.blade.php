@@ -23,12 +23,12 @@
 
 <body id='top'>
 
-    @if(App\Models\News::first()->status)
+    @if(App\Models\News::where('type', 'public')->first()->status)
         <div id="popup-container">
             <div id="popup-content">
                 <div id="close-button" onclick="closePopup()">X</div>
-                <p>{{ App\Models\News::first()->title }}</p>
-            <img src="{{ asset('images/news-image.png') }}" alt="Example Image">
+                <p>{{ App\Models\News::where('type', 'public')->first()->title }}</p>
+                <img src="{{ asset('images/news/public-news.png') }}" alt="Example Image">
             </div>
         </div>
     @endif
@@ -39,10 +39,12 @@
         </div>
         <nav id="header-nav-wrap">
             <ul class="header-main-nav">
-                <li class="current"><a class="smoothscroll" href="#home" title="home">Home</a></li>
-                <li><a class="smoothscroll" href="#about" title="about">About</a></li>
-                <li><a class="smoothscroll" href="#download" title="download">Contact</a></li>
-                @if(App\Models\News::first()->status)
+                <li class="current"><a class="" href="#home" title="home">Home</a></li>
+                <li><a class="" href="#about" title="about">About</a></li>
+                <li><a class="" href="#family" title="family">Family</a></li>
+                <li><a class="" href="#download" title="download">Contact</a></li>
+
+                @if(App\Models\News::where('type', 'public')->first()->status)
                     <li><a href="#" onclick="showPopup()">News</a></li>
                 @endif
             </ul>
@@ -99,7 +101,7 @@
         </ul>
 
         <div class="home-scrolldown">
-            <a href="#about" class="scroll-icon smoothscroll">
+            <a href="#about" class="scroll-icon">
                 <span>Scroll Down</span>
                 <i class="icon-arrow-right" aria-hidden="true"></i>
             </a>
@@ -186,9 +188,9 @@
     </section> <!-- end about -->
 
 
-    <!-- Testimonials Section
+    <!-- Family Section
     ================================================== -->
-    <section id="testimonials">
+    <section id="family">
 
         <div class="row">
             <div class="col-twelve">
@@ -245,7 +247,7 @@
 
         </div> <!-- end flex-container -->
 
-    </section> <!-- end testimonials -->
+    </section> <!-- end family -->
 
 
     <!-- download
@@ -420,22 +422,22 @@
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script>
-document.addEventListener("DOMContentLoaded", function() {
- 
-    if (!localStorage.getItem("popupShown")) {
-        showPopup();
-        localStorage.setItem("popupShown", "true");
-    }
-});
+        document.addEventListener("DOMContentLoaded", function() {
+    
+            if (!localStorage.getItem("popupShown")) {
+                showPopup();
+                localStorage.setItem("popupShown", "true");
+            }
+        });
 
-function showPopup() {
-    document.getElementById("popup-container").style.display = "flex";
-}
+        function showPopup() {
+            document.getElementById("popup-container").style.display = "flex";
+        }
 
-function closePopup() {
-    document.getElementById("popup-container").style.display = "none";
-    localStorage.setItem("popupShown", "");
-}
+        function closePopup() {
+            document.getElementById("popup-container").style.display = "none";
+            localStorage.setItem("popupShown", "");
+        }
     </script>
 </body>
 

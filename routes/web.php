@@ -34,11 +34,15 @@ Route::post('/profile/{userId}/update', [App\Http\Controllers\ProfileController:
 
 Route::delete('/profile/{userId}/delete', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
 
+Route::delete('/profile/image/{profileId}/delete', [App\Http\Controllers\ProfileController::class, 'destroyImage'])->name('profile.destroyImage');
+
 Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
 
 Route::post('/news', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store');
 
 Route::post('/news/update-status', [App\Http\Controllers\NewsController::class, 'updateStatus'])->name('news.updateStatus');
+
+Route::get('/logs', [App\Http\Controllers\LogController::class, 'index'])->name('logs.index');
 
 Route::get('/account-setting', [App\Http\Controllers\AccountController::class, 'index'])->name('account-setting.index');
 

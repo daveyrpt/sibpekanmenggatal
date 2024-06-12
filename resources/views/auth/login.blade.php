@@ -3,7 +3,7 @@
 @section('content')
     <div class="container min-vh-100 d-flex align-items-center justify-content-center">
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-6 col-md-6">
 
                 <div class="d-flex justify-content-center py-4">
                     <a href="{{ route('index') }}" class="logo d-flex align-items-center w-auto">

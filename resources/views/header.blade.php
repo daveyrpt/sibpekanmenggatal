@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user();
+@endphp
+
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -15,17 +19,16 @@
             <li class="nav-item dropdown pe-3">
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
-                        alt="Profile" class="rounded-circle mx-2">
-                <span class="d-none d-md-block dropdown-toggle ps-2 text-capitalize">{{ __('message.welcome') }}, {{ Auth::user()->name }}</span>
+                    @if($user->profile->profile_img)
+                        <img src="{{ asset('images/profile/' . $user->profile->profile_img) }}" alt="Profile Image" class="rounded-circle mx-2 border border-primary">
+                    @else
+                        <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png" alt="Profile Image" class="rounded-circle mx-2">
+                    @endif
+                    <span class="d-none d-md-block dropdown-toggle ps-2 text-capitalize">{{ __('message.welcome') }}, {{ $user->name }}</span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        @php
-                            $user = Auth::user();
-                        @endphp
-
                         <h6 class="text-capitalize">{{ $user->name }}</h6>
 
                         <span class="text-capitalize badge {{ $user->role === 'admin' ? 'bg-warning' : ($user->profile && $user->profile->member_type === 'tetap' ? 'bg-primary' : ($user->profile && $user->profile->member_type === 'bersekutu' ? 'bg-success' : '')) }}">

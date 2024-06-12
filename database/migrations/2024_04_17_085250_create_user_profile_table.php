@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->references('id')->on('users')->cascadeOnDelete();
             $table->string('fullname')->nullable();
             $table->string('date_of_birth')->nullable();
+            $table->string('age')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
@@ -28,6 +29,12 @@ return new class extends Migration
             $table->string('family')->nullable();
             $table->string('member_code')->nullable();
             $table->string('original_church')->nullable();
+            $table->string('baptize_date')->nullable();
+            $table->string('begin_year')->nullable();
+            $table->string('original_profile_img')->nullable();
+            $table->string('profile_img')->nullable();
+            $table->foreignId('manage_by')->nullable()->references('id')->on('users')->cascadeOnDelete();
+            $table->string('relationship')->nullable();
             $table->timestamps();
         });
 

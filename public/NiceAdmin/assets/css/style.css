@@ -478,7 +478,8 @@ h6 {
 }
 
 .header-nav .nav-profile img {
-  max-height: 36px;
+    height: 36px;
+    width: 36px;
 }
 
 .header-nav .nav-profile span {
@@ -1232,3 +1233,18 @@ h6 {
   color: #012970;
 }
 
+/*--------------------------------------------------------------
+# Etc
+--------------------------------------------------------------*/
+.required::after {
+    content: ' *';
+    color: red; 
+}
+
+div.dt-container .dt-paging .dt-paging-button {
+    padding: 0 !important;
+}
+
+label {
+    font-weight: bold;
+}
