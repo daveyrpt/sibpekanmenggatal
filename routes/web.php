@@ -49,11 +49,3 @@ Route::get('/account-setting', [App\Http\Controllers\AccountController::class, '
 Route::post('/account-setting/{userId}/update-own-profile', [App\Http\Controllers\AccountController::class, 'updateOwnProfile'])->name('account-setting.updateOwnProfile');
 
 Route::post('/account-setting/{userId}/update-user-profile', [App\Http\Controllers\AccountController::class, 'updateUserProfile'])->name('account-setting.updateUserProfile');
-
-Route::get('/run-migration', function(){
-
-    Artisan::call('optimize:clear');
-    Artisan::call('migrate:fresh --seed');
-
-    return "Success migrate";
-});
