@@ -164,6 +164,14 @@ p.lead {
   margin-bottom: 3.6rem;
 }
 
+ul.lead {
+  font-family: "muli-light", sans-serif;
+  font-size: 2.1rem;
+  line-height: 1.857;
+  color: #838383;
+  margin-bottom: 3.6rem;
+}
+
 @media only screen and (max-width: 768px) {
   p.lead {
     font-size: 2rem;

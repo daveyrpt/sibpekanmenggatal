@@ -17,13 +17,13 @@
     <script src="{{ asset('js/modernizr.js') }}"></script>
     <script src="{{ asset('js/pace.min.js') }}"></script>
 
-   @vite(['resources/js/app.js'])
+    @vite(['resources/js/app.js'])
 
 </head>
 
 <body id='top'>
 
-    @if(App\Models\News::where('type', 'public')->first()->status)
+    @if (App\Models\News::where('type', 'public')->first()->status)
         <div id="popup-container">
             <div id="popup-content">
                 <div id="close-button" onclick="closePopup()">X</div>
@@ -44,12 +44,12 @@
                 <li><a class="" href="#family" title="family">Family</a></li>
                 <li><a class="" href="#download" title="download">Contact</a></li>
 
-                @if(App\Models\News::where('type', 'public')->first()->status)
+                @if (App\Models\News::where('type', 'public')->first()->status)
                     <li><a href="#" onclick="showPopup()">News</a></li>
                 @endif
             </ul>
 
-            <a href="{{route('login')}}" title="sign-up" class="button button-primary cta">Sign In</a>
+            <a href="{{ route('login') }}" title="sign-up" class="button button-primary cta">Sign In</a>
         </nav>
         <a class="header-menu-toggle" href="#"><span>Menu</span></a>
     </header>
@@ -63,19 +63,19 @@
                 <div class="home-content-left">
 
                     <h3 data-aos="fade-up" id="title">Welcome to SIB Pekan Menggatal</h3>
-                    <h1 data-aos="fade-up">
-                        Embrace Faith, <br>
-                        Love, <br>
-                        Community.
+                    <h1 data-aos="fade-up" class="text-uppercase">
+                        Bersatu, <br>
+                        Bertumbuh & <br>
+                        Bersaksi.
                     </h1>
 
-                    <div class="buttons" >
+                    <div class="buttons">
                         <a href="#download" class="smoothscroll button stroke">
-                            Become a member
+                            Daftar sebagai anggota
                         </a>
-                        <a href="https://images.unsplash.com/photo-1522543558187-768b6df7c25c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            data-lity class="button stroke">
-                            Church Location
+                        <a href="https://www.google.com/maps/place/SIB+Pekan+Manggatal/@6.024953,116.1546778,17z/data=!3m1!4b1!4m6!3m5!1s0x323b6c60285eecb7:0xf5eafabf1191d971!8m2!3d6.024953!4d116.1572527!16s%2Fg%2F11btwtfrx6?entry=ttu"
+                            target="_blank" {{-- data-lity --}} class="button stroke">
+                            Lokasi gereja
                         </a>
                     </div>
 
@@ -83,11 +83,11 @@
 
             </div>
 
-        </div> 
+        </div>
 
         <ul class="home-social-list">
             <li>
-                <a href="#"><i class="fa fa-facebook-square"></i></a>
+                <a href="https://www.facebook.com/groups/503901012969814/"><i class="fa fa-facebook-square"></i></a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -116,15 +116,16 @@
         <div class="row about-intro">
 
             <div class="col-four">
-                <h1 class="intro-header" data-aos="fade-up">About Our Church</h1>
+                <h1 class="intro-header" data-aos="fade-up">Latar Belakang</h1>
             </div>
             <div class="col-eight">
-                <p class="lead" data-aos="fade-up">
-                    Experience transformative faith, boundless love, and vibrant community. Join
-                    our spiritual family where every soul is welcomed, and hearts find solace. Embrace worship,
-                    fellowship, and shared joy. Be a part of our meaningful journey celebrating divine presence,
-                    nurturing a community built on faith, love, and shared values.
-                </p>
+                <ul class="lead" data-aos="fade-up">
+                    <li>SIB Pekan Manggatal (SIBPM) bermula dari sebuah kelompok sel yang dibentuk pada tahun 1996 dan bertemu setiap hari rabu.</li>
+                    <li>Kebaktian pertama diadakan di bangunan kedai Pekan Manggatal pada 10/9/2000.</li>
+                    <li>Gereja ditahbis pada 9/9/2001 sempena ulang tahun yang pertama maka dengan itu lahirlah satu Jemaat SIB Pekan Manggatal sehingga hari ini.</li>
+                    <li>Marilah bergabung dengan komuniti SIBPM dan bersama-sama bertumbuh dalam iman percaya kepada Yesus Kristus.</li>
+                </ul>
+
             </div>
 
         </div>
@@ -137,14 +138,13 @@
 
                     <div class="service-content">
 
-                        <h3>Mission</h3>
-
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit.
-                        </p>
-
+                        <h3>Misi</h3>
+                        <ul>
+                            <li>Mengutamakan keterlibatan jemaat dalam aktiviti gereja.</li>
+                            <li>Menekankan pendidikan Alkitab untuk meningkatkan pengetahuan dan pertumbuhan rohani.</li>
+                            <li>Menjadikan pemberitaan injil tentang Yesus Kristus sebagai gaya hidup jemaat.</li>
+                            <li>Menggerakkan penubuhan gereja di kawasan yang strategik.</li>
+                        </ul>
                     </div>
 
                 </div> <!-- /bgrid -->
@@ -154,10 +154,7 @@
                     <div class="service-content">
                         <h3>Vision</h3>
 
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit.
+                        <p>“ Menjadi Gereja Pemangkin yang Bersatu, Bertumbuh dan Bersaksi ”
                         </p>
 
 
@@ -336,15 +333,14 @@
                     <h4>Contact</h4>
 
                     <p>
-                        1600 Amphitheatre Parkway<br>
-                        Mountain View, CA <br>
-                        94043 US<br>
+                        Lot 4-6, Tingkat 2, Blok H,<br>
+                        Pekan Manggatal, Peri Surat 177, Manggatal, <br>
+                        88450, Kota Kinabalu, Sabah<br>
                     </p>
 
                     <p>
-                        someone@dazzlesite.com <br>
-                        Phone: (+63) 555 1212 <br>
-                        Fax: (+63) 555 0100
+                        sibpekanmenggatal@gmail.com <br>
+                        Phone: 088-492173 <br>
                     </p>
 
                 </div> <!-- end footer-contact -->
@@ -423,7 +419,7 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-    
+
             if (!localStorage.getItem("popupShown")) {
                 showPopup();
                 localStorage.setItem("popupShown", "true");
