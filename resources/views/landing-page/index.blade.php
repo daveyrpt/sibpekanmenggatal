@@ -27,7 +27,9 @@
         <div id="popup-container">
             <div id="popup-content">
                 <div id="close-button" onclick="closePopup()">X</div>
-                <p>{{ App\Models\News::where('type', 'public')->first()->title }}</p>
+                @if(App\Models\News::where('type', 'public')->first()->title)
+                    <p class="text-center">{{ App\Models\News::where('type', 'public')->first()->title }}</p>
+                @endif
                 <img src="{{ asset('images/news/public-news.png') }}" alt="Example Image">
             </div>
         </div>
