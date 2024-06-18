@@ -43,7 +43,7 @@
             <ul class="header-main-nav">
                 <li class="current"><a class="" href="#home" title="home">Home</a></li>
                 <li><a class="" href="#about" title="about">About</a></li>
-                <li><a class="" href="#family" title="family">Family</a></li>
+                {{-- <li><a class="" href="#family" title="family">Family</a></li> --}}
                 <li><a class="" href="#download" title="download">Contact</a></li>
 
                 @if (App\Models\News::where('type', 'public')->first()->status)
@@ -57,10 +57,10 @@
     </header>
 
     <section id="home" data-parallax="scroll"
-        data-image-src="https://images.unsplash.com/photo-1496450681664-3df85efbd29f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmFja2dyb3VuZCUyMGNsb3VkfGVufDB8fDB8fHww"
+        data-image-src="images/sibpm-background.jpeg"
         data-natural-width=3000 data-natural-height=2000>
 
-        <div class="home-content">
+        <div class="home-content" style="background-color: rgba(0, 0, 0, 0.5);">
             <div class="row contents">
                 <div class="home-content-left">
 
@@ -134,13 +134,13 @@
 
         <div class="row about-features">
 
-            <div class="features-list block-1-3 block-m-1-2 block-mob-full group">
+            <div class="features-list block-1-2 block-m-1-2 block-mob-full group">
 
                 <div class="bgrid feature" data-aos="fade-up">
 
                     <div class="service-content">
 
-                        <h3>Misi</h3>
+                        <h3 class="text-center">Misi</h3>
                         <ul>
                             <li>Mengutamakan keterlibatan jemaat dalam aktiviti gereja.</li>
                             <li>Menekankan pendidikan Alkitab untuk meningkatkan pengetahuan dan pertumbuhan rohani.</li>
@@ -154,7 +154,7 @@
                 <div class="bgrid feature" data-aos="fade-up">
 
                     <div class="service-content">
-                        <h3>Vision</h3>
+                        <h3 class="text-center">Visi</h3>
 
                         <p>“ Menjadi Gereja Pemangkin yang Bersatu, Bertumbuh dan Bersaksi ”
                         </p>
@@ -164,7 +164,7 @@
 
                 </div> <!-- /bgrid -->
 
-                <div class="bgrid feature" data-aos="fade-up">
+                {{-- <div class="bgrid feature" data-aos="fade-up">
 
 
                     <div class="service-content">
@@ -178,7 +178,7 @@
 
                     </div>
 
-                </div> <!-- /bgrid -->
+                </div> --}} <!-- /bgrid -->
 
             </div> <!-- end features-list -->
 
@@ -189,7 +189,7 @@
 
     <!-- Family Section
     ================================================== -->
-    <section id="family">
+  {{--   <section id="family">
 
         <div class="row">
             <div class="col-twelve">
@@ -246,7 +246,7 @@
 
         </div> <!-- end flex-container -->
 
-    </section> <!-- end family -->
+    </section> --}} <!-- end family -->
 
 
     <!-- download
@@ -305,8 +305,7 @@
                     <h4>SIBPM</h4>
 
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in ipsum id orci porta
-                        dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.
+                        <a href='https://www.facebook.com/share/JbpAGuktLih7wx3w/?mibextid=K35XfP' target="_blank" style="color: #767676">Facebook</a>
                     </p>
 
                     <ul class="footer-social-list">
