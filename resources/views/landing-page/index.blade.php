@@ -89,7 +89,7 @@
 
         <ul class="home-social-list">
             <li>
-                <a href="https://www.facebook.com/groups/503901012969814/"><i class="fa fa-facebook-square"></i></a>
+                <a href="https://www.facebook.com/groups/503901012969814/" target="_blank"><i class="fa fa-facebook-square"></i></a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-twitter"></i></a>
