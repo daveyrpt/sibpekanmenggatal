@@ -32,26 +32,34 @@ class NewsController extends Controller
         ]);
 
         if ($request->hasFile('file')) {
-            $oldFileModel = News::where('type', $request->input('type'))->latest()->first();
-            if ($oldFileModel) {
-                $oldFilePath = public_path($oldFileModel->file_path);
+            // Retrieve the existing file entry
+            $fileModel = News::where('type', $request->input('type'))->latest()->first();
+
+            if ($fileModel) {
+                // Get the old file path
+                $oldFilePath = public_path($fileModel->file_path);
+
+                // Delete the old file if it exists
                 if (file_exists($oldFilePath)) {
-                    //unlink($oldFilePath);
-                    $oldFileModel->delete();
+                    unlink($oldFilePath);
                 }
+            } else {
+                // If no existing file model is found, create a new one
+                $fileModel = new News;
             }
 
+            // Move the new file to the desired location
             $file = $request->file('file');
-            //$fileName = time() . '_' . $file->getClientOriginalName();
             $fileName = $request->input('type') === 'public' ? 'public-news.png' : 'members-news.png';
-            $filePath = $file->move(public_path('images/news'), $fileName);
+            $file->move(public_path('images/news'), $fileName);
 
-            $fileModel = new News;
+            // Update the file model with the new file information
             $fileModel->title = $request->input('title');
             $fileModel->name = $fileName;
             $fileModel->type = $request->input('type');
             $fileModel->file_path = '/images/news/' . $fileName;
             $fileModel->save();
+     
 
             Log::create([
                 'causer_id' => Auth::user()->id,
