@@ -72,7 +72,7 @@
                     </h1>
 
                     <div class="buttons">
-                        <a href="#download" class="smoothscroll button stroke">
+                        <a href="{{ route('register') }}" class="smoothscroll button stroke">
                             Daftar sebagai anggota
                         </a>
                         <a href="https://www.google.com/maps/place/SIB+Pekan+Manggatal/@6.024953,116.1546778,17z/data=!3m1!4b1!4m6!3m5!1s0x323b6c60285eecb7:0xf5eafabf1191d971!8m2!3d6.024953!4d116.1572527!16s%2Fg%2F11btwtfrx6?entry=ttu"
