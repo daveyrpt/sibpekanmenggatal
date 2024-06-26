@@ -122,8 +122,8 @@
             <div class="col-eight">
                 <ul class="lead" data-aos="fade-up">
                     <li>SIB Pekan Manggatal (SIBPM) bermula dari sebuah kelompok sel yang dibentuk pada tahun 1996 dan bertemu setiap hari rabu.</li>
-                    <li>Kebaktian pertama diadakan di bangunan kedai Pekan Manggatal pada 10/9/2000.</li>
-                    <li>Gereja ditahbis pada 9/9/2001 sempena ulang tahun yang pertama maka dengan itu lahirlah satu Jemaat SIB Pekan Manggatal sehingga hari ini.</li>
+                    <li>Kebaktian pertama diadakan di bangunan kedai Pekan Manggatal pada 10 September 2000.</li>
+                    <li>Gereja ditahbis pada 9 September 2001 sempena ulang tahun yang pertama maka dengan itu lahirlah satu Jemaat SIB Pekan Manggatal sehingga hari ini.</li>
                     <li>Marilah bergabung dengan komuniti SIBPM dan bersama-sama bertumbuh dalam iman percaya kepada Yesus Kristus.</li>
                 </ul>
 
