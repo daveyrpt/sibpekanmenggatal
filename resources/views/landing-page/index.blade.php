@@ -308,7 +308,7 @@
                         <a href='https://www.facebook.com/share/JbpAGuktLih7wx3w/?mibextid=K35XfP' target="_blank" style="color: #767676">Facebook</a>
                     </p>
 
-                    <ul class="footer-social-list">
+{{--                     <ul class="footer-social-list">
                         <li>
                             <a href="#"><i class="fa fa-facebook-square"></i></a>
                         </li>
@@ -324,14 +324,14 @@
                         <li>
                             <a href="#"><i class="fa fa-instagram"></i></a>
                         </li>
-                    </ul>
+                    </ul> --}}
 
 
                 </div> <!-- end footer-info -->
 
                 <div class="col-three md-1-3 tab-1-2 mob-full footer-contact">
 
-                    <h4>Contact</h4>
+                    <h4>Alamat</h4>
 
                     <p>
                         Lot 4-6, Tingkat 2, Blok H,<br>
@@ -339,36 +339,26 @@
                         88450, Kota Kinabalu, Sabah<br>
                     </p>
 
+                </div> <!-- end footer-contact -->
+
+                <div class="col-three md-1-3 tab-1-2 mob-full footer-site-links">
+
+                    <h4>Hubungi Kami</h4>
+
                     <p>
                         sibpekanmenggatal@gmail.com <br>
                         Phone: 088-492173 <br>
                     </p>
 
-                </div> <!-- end footer-contact -->
-
-                <div class="col-two md-1-3 tab-1-2 mob-full footer-site-links">
-
-                    <h4>Site Links</h4>
-
-                    <ul class="list-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-
                 </div> <!-- end footer-site-links -->
 
-                <div class="col-four md-1-2 tab-full footer-subscribe">
+                <div class="col-three md-1-2 tab-full footer-subscribe">
 
-                    <h4>Our Newsletter</h4>
+                    <h4>Kegunaan Sistem</h4>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
+                    <p>Sistem ini digunakan untuk mempermudah pengurusan SIB Pekan Menggatal untuk membawa berita terkini dan menyimpan maklumat keahlian.</p>
 
-                    <div class="subscribe-form">
+{{--                     <div class="subscribe-form">
 
                         <form id="mc-form" class="group" novalidate="true">
 
@@ -381,7 +371,7 @@
 
                         </form>
 
-                    </div>
+                    </div> --}}
 
                 </div> <!-- end footer-subscribe -->
 
