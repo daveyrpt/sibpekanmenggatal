@@ -346,7 +346,7 @@
 
                 </div> <!-- end footer-contact -->
 
-          <!--      <div class="col-two md-1-3 tab-1-2 mob-full footer-site-links">
+                <div class="col-two md-1-3 tab-1-2 mob-full footer-site-links">
 
                     <h4>Site Links</h4>
 
@@ -359,9 +359,9 @@
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
 
-                </div>  end footer-site-links -->
+                </div> <!-- end footer-site-links -->
 
-            <!--    <div class="col-four md-1-2 tab-full footer-subscribe">
+                <div class="col-four md-1-2 tab-full footer-subscribe">
 
                     <h4>Our Newsletter</h4>
 
@@ -383,7 +383,7 @@
 
                     </div>
 
-                </div>  end footer-subscribe -->
+                </div> <!-- end footer-subscribe -->
 
             </div> <!-- /row -->
         </div> <!-- end footer-main -->
