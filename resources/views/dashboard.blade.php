@@ -143,7 +143,7 @@
                             <tr>
                                 <td scope="row" class="text-start">{{ $index + 1 }}</td>
                                 <td class="text-start"><a href="{{ route('profile.index', $member->user_id) }}" class="text-primary">{{ $member->fullname ?? '-' }}</a></td>
-                                <td class="text-start">{{ $member->state ?? '-' }}</td>
+                                <td class="text-start">{{ $member->city . ', ' . $member->state ?? '-' }}</td>
                                 <td class="text-start">{{ $member->occupation ?? '-' }}</td>
                                 <td class="text-center text-capitalize text-white"><span class="badge {{ $member->member_type == 'tetap' ? 'bg-primary ' : ($member->member_type == 'bersekutu' ? 'bg-success' : 'text-black -')}}">{{ $member->member_type ?? '-' }}</span></td>
                                 <td class="text-start">
