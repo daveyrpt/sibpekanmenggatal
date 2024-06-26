@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>{{ __('message.log') }}</h1>
+        <h1>{{ __('message.help and support') }}</h1>
         <nav class="d-flex justify-content-between">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Home</li>
@@ -13,7 +13,7 @@
         <div class="col-12">
             <div class="card recent-sales overflow-auto">
                 <div class="card-body">
-                    <h5 class="card-title">{{ __('message.log') }}</h5>
+                    <h5 class="card-title">{{ __('message.help and support') }}</h5>
                     <table id="contact-form-table" class="table datatable">
                         <thead>
                             <tr>
