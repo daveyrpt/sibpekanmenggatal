@@ -300,7 +300,7 @@
         <div class="footer-main">
             <div class="row">
 
-                <div class="col-three md-1-3 tab-full footer-info">
+                <div class="col-four md-1-2 tab-full footer-info">
 
                     <h4>SIBPM</h4>
 
@@ -329,7 +329,7 @@
 
                 </div> <!-- end footer-info -->
 
-                <div class="col-three md-1-3 tab-1-2 mob-full footer-contact">
+                <div class="col-six md-1-2 tab-1-2 mob-full footer-contact">
 
                     <h4>Contact</h4>
 
