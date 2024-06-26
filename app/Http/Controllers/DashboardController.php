@@ -30,9 +30,9 @@ class DashboardController extends Controller
         if(auth()->user()->role != 'admin')
             return view('dashboard-user');
 
-        $listOfAdmin = User::where('role', 'admin')->pluck('id');
+        $superAdminList = User::where('superAdmin', '1')->pluck('id');
 
-        $userProfile = UserProfile::whereNot('superAdmin', '1')->get();
+        $userProfile = UserProfile::whereNotIn('user_id', $superAdminList)->get();
 
         // total permanant users
         $totalUsersThisYearForPermanentMember = UserProfile::where('member_type', 'tetap')->whereYear('created_at', Carbon::now()->year)->count();
