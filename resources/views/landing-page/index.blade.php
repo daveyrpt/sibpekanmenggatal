@@ -18,7 +18,6 @@
     <script src="{{ asset('js/pace.min.js') }}"></script>
 
     @vite(['resources/js/app.js'])
-
 </head>
 
 <body id='top'>
@@ -255,33 +254,34 @@
 
         <div class="row">
             <div class="col-full">
-                <h1 class="intro-header" data-aos="fade-up">Contact us !</h1>
+                <h1 class="intro-header" data-aos="fade-up">Hubungi Kami !</h1>
                 <div class="card p-4">
-                    <form action="forms/contact.php" method="post" class="php-email-form">
+                    <form action="{{ route('contact-form.store') }}" method="post" class="php-email-form">
+                        @csrf
                         <div class="row gy-4">
 
                             <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                <input type="text" name="name" class="form-control" placeholder="Nama"
                                     required>
                             </div>
 
                             <div class="col-md-6 ">
-                                <input type="email" class="form-control" name="email" placeholder="Your Email"
+                                <input type="text" class="form-control" name="contact" placeholder="No. HP"
                                     required>
                             </div>
 
                             <div class="col-md-12">
-                                <input type="text" class="form-control" name="subject" placeholder="Subject"
+                                <input type="text" class="form-control" name="subject" placeholder="Subjek"
                                     required>
                             </div>
 
                             <div class="col-md-12">
-                                <input type="text" class="form-control" name="subject" placeholder="Content"
+                                <input type="text" class="form-control" name="content" placeholder="Isi Kandungan"
                                     required>
                             </div>
 
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="button button-primary cta">Send Message</button>
+                                <button type="submit" class="button button-primary" id='contact-form-button'>Hantar</button>
                             </div>
 
                         </div>
@@ -418,6 +418,7 @@
     <script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 
@@ -436,6 +437,7 @@
             localStorage.setItem("popupShown", "");
         }
     </script>
+
 </body>
 
 

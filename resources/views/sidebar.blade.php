@@ -26,6 +26,15 @@
             </li>
         @endif
 
+        @if (Auth::user()->role === 'admin')
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('contact-form*') ? '' : 'collapsed' }}" href="{{ route('contact-form.index') }}">
+                    <i class="bi bi-patch-question-fill"></i>
+                    <span>{{ __('message.help and support') }}</span>
+                </a>
+            </li>
+        @endif
+
         @if (Auth::user()->isSuperAdmin)
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('logs*') ? '' : 'collapsed' }}" href="{{ route('logs.index') }}">

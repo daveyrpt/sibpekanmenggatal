@@ -13,7 +13,7 @@ class LogController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        $logs = Log::get();
+        $logs = Log::latest()->get();
 
         return view('log', compact('logs'));
     }

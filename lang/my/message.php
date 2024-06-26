@@ -115,6 +115,14 @@ return [
     'current news' => 'Berita Sekarang',
     'news type' => 'Jenis Berita',
 
+    // contact us
+    'help and support' => 'Soalan',
+    'contact us' => 'Hubungi Kami',
+    'contact_no' => 'No. HP',
+    'subject' => 'Subjek',
+    'content' => 'Isi Kandungan',
+    'time' => 'Masa',
+
     // setting
     'account setting' => 'Tetapan Akaun',
 ];
