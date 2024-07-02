@@ -14,6 +14,7 @@ class Log extends Model
     public const CREATE_ACCOUNT = 'create account and profile';
     public const UPDATE_ACCOUNT = 'update account';
     public const DELETE_ACCOUNT = 'delete account and profile';
+    public const REMOVE_PROFILE_IMG = 'remove profile image';
     public const UPDATE_PROFILE = 'update profile';
     public const DELETE_SUPERADMIN = 'attempt to delete superadmin';
     public const UPDATE_PUBLIC_NEWS = 'update public news';

@@ -248,6 +248,12 @@ class ProfileController extends Controller
 
         $profile->update();
 
+        Log::create([
+            'causer_id' => Auth::user()->id,
+            'description' => LOG::REMOVE_PROFILE_IMG . ' ' . $profile->fullname,
+            'target_id' => $profile->user_id
+        ]);
+
         alert()->success(__('message.success'), __('message.profile image deleted successfully'));
 
         return redirect()->back();
