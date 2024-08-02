@@ -132,10 +132,16 @@
                         <tr>
                             <th scope="col" class="text-start">#</th>
                             <th scope="col" class="text-start">{{ __('message.name') }}</th>
+                            <th scope="col" class="text-start">Tarikh Lahir</th>
+                            <th scope="col" class="text-start">Umur</th>
+                            <th scope="col" class="text-start">Jantina</th>
                             <th scope="col" class="text-start">{{ __('message.address') }}</th>
                             <th scope="col" class="text-start">{{ __('message.occupation') }}</th>
                             <th scope="col" class="text-center">{{ __('message.member type') }}</th>
-                            <th scope="col" class="text-start">{{ __('message.action') }}</th>
+                            <th scope="col" class="text-center">Kod Keahlian</th>
+                            <th scope="col" class="text-center">Gereja Asal</th>
+                            <th scope="col" class="text-center">Tarikh Baptis</th>
+                            <th scope="col" class="d-print-none">{{ __('message.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -143,9 +149,15 @@
                             <tr>
                                 <td scope="row" class="text-start">{{ $index + 1 }}</td>
                                 <td class="text-start"><a href="{{ route('profile.index', $member->user_id) }}" class="text-primary">{{ $member->fullname ?? '-' }}</a></td>
+                                <td class="text-start">{{ $member->date_of_birth ?? '-' }}</td>
+                                <td class="text-start">{{ $member->age ?? '-' }}</td>
+                                <td class="text-start">{{ $member->gender ?? '-' }}</td>
                                 <td class="text-start">{{ $member->city . ', ' . $member->state ?? '-' }}</td>
                                 <td class="text-start">{{ $member->occupation ?? '-' }}</td>
                                 <td class="text-center text-capitalize text-white"><span class="badge {{ $member->member_type == 'tetap' ? 'bg-primary ' : ($member->member_type == 'bersekutu' ? 'bg-success' : 'text-black -')}}">{{ $member->member_type ?? '-' }}</span></td>
+                                <td class="text-start">{{ $member->family_code ?? '-' }}</td>
+                                <td class="text-start">{{ $member->original_church ?? '-' }}</td>
+                                <td class="text-start">{{ $member->baptize_date ?? '-' }}</td>
                                 <td class="text-start">
                                     <div class="d-flex">
                                         <a href='{{ route('profile.edit', ['userId' => $member->user_id]) }}'
