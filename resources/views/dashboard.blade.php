@@ -155,7 +155,7 @@
                                 <td class="text-start">{{ $member->city . ', ' . $member->state ?? '-' }}</td>
                                 <td class="text-start">{{ $member->occupation ?? '-' }}</td>
                                 <td class="text-center text-capitalize text-white"><span class="badge {{ $member->member_type == 'tetap' ? 'bg-primary ' : ($member->member_type == 'bersekutu' ? 'bg-success' : 'text-black -')}}">{{ $member->member_type ?? '-' }}</span></td>
-                                <td class="text-start">{{ $member->family_code ?? '-' }}</td>
+                                <td class="text-start">{{ $member->member_code ?? '-' }}</td>
                                 <td class="text-start">{{ $member->original_church ?? '-' }}</td>
                                 <td class="text-start">{{ $member->baptize_date ?? '-' }}</td>
                                 <td class="text-start">
