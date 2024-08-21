@@ -198,7 +198,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <p>{{ $userProfile->gender ?? '-' }}</p>
+                                <p>{{ $userProfile->gender == 'male' ? 'Lelaki' : 'Perempuan' }}</p>
                             </div>
                         </div>
                     </div>
@@ -212,7 +212,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <p>{{ $userProfile->member_type ?? '-' }}</p>
+                                <p class="text-capitalize">{{ $userProfile->member_type ?? '-' }}</p>
                             </div>
                         </div>
                     </div>
