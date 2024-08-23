@@ -27,6 +27,7 @@ return [
     'contact number' => 'Nombor HP',
     'occupation' => 'Pekerjaan',
     'date of birth' => 'Tarikh Lahir',
+    'ic' => 'IC',
     'age' => 'Umur',
     'gender' => 'Jantina',
     'action' => 'Aksi',

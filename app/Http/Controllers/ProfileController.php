@@ -266,6 +266,7 @@ class ProfileController extends Controller
             'fullname' => ['required'],
             'date_of_birth' => ['nullable', 'date'],
             'age' => ['nullable', 'numeric'],
+            'ic' => ['nullable'],
             'address' => ['nullable'],
             'city' => ['nullable'],
             'state' => ['nullable'],

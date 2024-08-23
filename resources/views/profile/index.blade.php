@@ -108,6 +108,20 @@
                     <div class="row m-3">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label>{{ __('message.ic') }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <p>{{ $userProfile->ic ?? '-' }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label>{{ __('message.address') }}</label>
                             </div>
                         </div>

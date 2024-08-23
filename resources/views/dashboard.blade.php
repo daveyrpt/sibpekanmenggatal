@@ -152,6 +152,7 @@
                                 <td class="text-start">{{ $member->date_of_birth ?? '-' }}</td>
                                 <td class="text-start">{{ $member->age ?? '-' }}</td>
                                 <td class="text-start">{{ $member->gender ?? '-' }}</td>
+                               <td class="text-start">{{ $member->ic ?? '-' }}</td>
                                 <td class="text-start">{{ $member->city . ', ' . $member->state ?? '-' }}</td>
                                 <td class="text-start">{{ $member->occupation ?? '-' }}</td>
                                 <td class="text-center text-capitalize text-white"><span class="badge {{ $member->member_type == 'tetap' ? 'bg-primary ' : ($member->member_type == 'bersekutu' ? 'bg-success' : 'text-black -')}}">{{ $member->member_type ?? '-' }}</span></td>

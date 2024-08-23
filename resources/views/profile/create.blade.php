@@ -118,6 +118,20 @@
                         <div class="row m-3">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label for="ic">{{ __('message.ic') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="ic">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label for="address">{{ __('message.address') }}</label>
                                 </div>
                             </div>
