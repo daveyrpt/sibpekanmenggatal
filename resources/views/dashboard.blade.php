@@ -135,6 +135,7 @@
                             <th scope="col" class="text-start">Tarikh Lahir</th>
                             <th scope="col" class="text-start">Umur</th>
                             <th scope="col" class="text-start">Jantina</th>
+                            <th scope="col" class="text-start">IC</th>
                             <th scope="col" class="text-start">{{ __('message.address') }}</th>
                             <th scope="col" class="text-start">{{ __('message.occupation') }}</th>
                             <th scope="col" class="text-center">{{ __('message.member type') }}</th>
